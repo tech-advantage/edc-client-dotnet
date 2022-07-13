@@ -2,8 +2,9 @@
 
 namespace edc_client_dotnet.internalImpl.model
 {
-    internal class ObjectIdImpl : IObjectId
+    public class ObjectIdService : IObjectIdService
     {
+        //private IObjectIdService _objectId;
         private long id;
 
         public long GetId(){ return this.id; }

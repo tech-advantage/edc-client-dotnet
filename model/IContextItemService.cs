@@ -1,7 +1,7 @@
 ﻿
 namespace edc_client_dotnet.model
 {
-    internal interface IContextItem
+    public interface IContextItemService
     {
 
         /// <summary>

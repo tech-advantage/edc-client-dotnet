@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace edc_client_dotnet.utils
 {
-    internal static class ParseEnumDescription
+    public static class ParseEnumDescription
     {
         public static string GetDescription(this Enum e)
         {

@@ -2,13 +2,16 @@
 
 namespace edc_client_dotnet.internalImpl.model
 {
-    internal class ContextItemImpl : DocumentationItemImpl, IContextItem
+    public class ContextItemService : DocumentationItemService, IContextItemService
     {
+        //private IContextItem _contextItem;
         private String description;
         private String mainKey;
         private String subKey;
 
-        public ContextItemImpl(): base(DocumentationItemType.CONTEXTUAL) {}
+        public ContextItemService() : base(DocumentationItemType.CONTEXTUAL){}
+
+        
         public string GetDescription()
         {
             return description;

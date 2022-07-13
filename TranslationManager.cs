@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace edc_client_dotnet
 {
-    internal interface TranslationManager
+    public interface TranslationManager
     {
         /// <summary>
         ///     Load the translation information and the translation popover labels
@@ -21,7 +21,7 @@ namespace edc_client_dotnet
         /// <param name="publicationInformation">a map containing all the publication information for every publication</param>
         /// <exception cref="IOException">if an IO error occurred</exception>
         /// <exception cref="InvalidUrlException">if the i18n files urls were not valid</exception>
-        void LoadTranslations(Dictionary<String, IInformation> publicationInformation);
+        void LoadTranslations(Dictionary<String, IInformationService> publicationInformation);
 
         /// <summary>
         ///     Force the reload of the translation information and labels on the next read

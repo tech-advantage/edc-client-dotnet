@@ -1,7 +1,7 @@
 ﻿
 namespace edc_client_dotnet.model
 {
-    internal enum DocumentationItemType
+    public enum DocumentationItemType
     {
         /// <summary>
         ///     Unknown documentation item type

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace edc_client_dotnet
 {
-    internal interface IInformationManager
+    public interface IInformationManager
     {
         /// <summary>
         ///     Load the information for every publication, from the info.json files
@@ -27,6 +27,6 @@ namespace edc_client_dotnet
         /// <returns>a map with publication id as key and information as value</returns>
         /// <exception cref="IOException">if an error occurred while getting the file</exception>
         /// <exception cref="InvalidUrlException">if the url was not valid</exception>
-        Dictionary<String, IInformation> GetPublicationInformation();
+        Dictionary<String, IInformationService> GetPublicationInformation();
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace edc_client_dotnet.model
 {
-    internal interface IClientConfiguration
+    public interface IClientConfigurationService
     {
 
         /// <summary>
@@ -30,6 +30,7 @@ namespace edc_client_dotnet.model
         ///     Define the WebHelp context.
         /// </summary>
         /// <param name="webHelpContext">webHelpContext the WebHelp context to set.</param>
+        /// <exception cref="InvalidUrlException">if the context is null</exception>
         void SetWebHelpContext(String webHelpContext);
 
         /// <summary>
@@ -45,18 +46,21 @@ namespace edc_client_dotnet.model
         ///     Define the documentation context.
         /// </summary>
         /// <param name="documentationContext">documentationContext the documentation context to set</param>
+        /// <exception cref="InvalidUrlException">if the context is null</exception>
         void SetDocumentationContext(String documentationContext);
 
         /// <summary>
         ///     Generate the WebHelp url bases on server url and its context.
         /// </summary>
         /// <returns>the WebHelp url</returns>
+        /// <exception cref="InvalidUrlException">if the url is malformed</exception>
         String GetWebHelpUrl();
 
         /// <summary>
         ///     Generate the documentation url based on server url and its context.
         /// </summary>
         /// <returns>the documentation url</returns>
+        /// <exception cref="InvalidUrlException">if the url is malformed</exception>
         String GetDocumentationUrl();
     }
 }

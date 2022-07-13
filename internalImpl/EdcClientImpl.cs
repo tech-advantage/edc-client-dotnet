@@ -5,23 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace edc_client_dotnet
+namespace edc_client_dotnet.internalImpl
 {
-    public class EdcClientSingleton : IEdcClient
+    public class EdcClientImpl : IEdcClient
     {
-        private static EdcClientSingleton instance = null;
-        private IEdcClient edcClient;
-
-        private EdcClientSingleton() : base() { }
-
-        //public static EdcClientSingleton GetInstance()
-        //{
-        //    if(instance == null)
-        //    {
-        //        instance = new EdcClientSingleton();
-        //        instance.init()
-        //    }
-        //}
         public void ForceReload()
         {
             throw new NotImplementedException();

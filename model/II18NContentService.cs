@@ -1,7 +1,7 @@
 ﻿
 namespace edc_client_dotnet.model
 {
-    internal interface II18NContent
+    public interface II18NContentService
     {
         /// <summary>
         ///     Return I18n translation built with the lang and key

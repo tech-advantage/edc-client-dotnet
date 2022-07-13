@@ -2,11 +2,14 @@
 
 namespace edc_client_dotnet.internalImpl.model
 {
-    internal class ClientConfigurationImpl : IClientConfiguration
+    public class ClientConfigurationService : IClientConfigurationService
     {
+        private IClientConfigurationService _clientConfiguration;
         private String serverUrl = "";
-        private String webHelpContext = "\\help";
-        private String documentationContext = "\\doc";
+        private String webHelpContext = "/help";
+        private String documentationContext = "/doc";
+
+     
 
         public string GetDocumentationContext()
         {

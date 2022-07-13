@@ -2,7 +2,7 @@
 
 namespace edc_client_dotnet.internalImpl.model
 {
-    internal class I18NContentImpl : II18NContent
+    public class I18NContentService : II18NContentService
     {
         Dictionary<String, String> translation = new Dictionary<String, String>();
         public string GetTranslation(string lang, string type, string key, string publicationId)

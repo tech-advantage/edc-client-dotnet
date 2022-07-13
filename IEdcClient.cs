@@ -3,7 +3,7 @@ using edc_client_dotnet.model;
 
 namespace edc_client_dotnet
 {
-    internal interface IEdcClient
+    public interface IEdcClient
     {
         /// <summary>
         ///     Create the url for the context according to the main key, the subkey and the language code.
@@ -55,7 +55,7 @@ namespace edc_client_dotnet
         /// <returns>the context item</returns>
         /// <exception cref="IOException">if an error is occurred on reading</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        IContextItem GetContextItem(String mainKey, String subKey, String languageCode);
+        IContextItemService GetContextItem(String mainKey, String subKey, String languageCode);
 
         /// <summary>
         ///     Return the label translation for the given key

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace edc_client_dotnet.utils
 {
-    internal interface IKeyUtil
+    public interface IKeyUtil
     {
         /// <summary>
         ///     Build the key according to the main, sub key and the language code.

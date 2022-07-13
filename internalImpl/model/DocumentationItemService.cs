@@ -3,23 +3,27 @@ using System.Collections.ObjectModel;
 
 namespace edc_client_dotnet.internalImpl.model
 {
-    internal class DocumentationItemImpl : ObjectIdImpl, IDocumentationItem
+    public class DocumentationItemService : ObjectIdService, IDocumentationItemService
     {
         private String? label;
         private String? publicationId;
         private String? url;
         private String? languageCode;
         private DocumentationItemType documentationItemType;
-        private List<IDocumentationItem> articles = new List<IDocumentationItem>();
-        private List<IDocumentationItem> links = new List<IDocumentationItem>();
+        private List<IDocumentationItemService> articles = new List<IDocumentationItemService>();
+        private List<IDocumentationItemService> links = new List<IDocumentationItemService>();
+        private DocumentationItemType CONTEXTUAL;
 
-        public DocumentationItemImpl() { }
-        public DocumentationItemImpl(DocumentationItemType documentationItemType)
+        public DocumentationItemService()
+        {
+        }
+
+        public DocumentationItemService(DocumentationItemType documentationItemType)
         {
             this.documentationItemType = documentationItemType;
         }
 
-        public void AddArticle(IDocumentationItem article)
+        public void AddArticle(IDocumentationItemService article)
         {
             if (article.GetDocumentationItemType() == DocumentationItemType.ARTICLE)
             {
@@ -27,7 +31,7 @@ namespace edc_client_dotnet.internalImpl.model
             }
         }
 
-        public void AddLink(IDocumentationItem link)
+        public void AddLink(IDocumentationItemService link)
         {
             if (link.GetDocumentationItemType() != DocumentationItemType.ARTICLE)
             {
@@ -74,12 +78,12 @@ namespace edc_client_dotnet.internalImpl.model
             this.url = url;
         }
 
-        ReadOnlyCollection<IDocumentationItem> IDocumentationItem.GetArticles()
+        ReadOnlyCollection<IDocumentationItemService> IDocumentationItemService.GetArticles()
         {
             return articles.AsReadOnly();
         }
 
-        ReadOnlyCollection<IDocumentationItem> IDocumentationItem.GetLinks()
+        ReadOnlyCollection<IDocumentationItemService> IDocumentationItemService.GetLinks()
         {
             return links.AsReadOnly();
         }

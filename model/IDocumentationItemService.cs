@@ -3,7 +3,7 @@
 
 namespace edc_client_dotnet.model
 {
-    internal interface IDocumentationItem : IObjectId
+    public interface IDocumentationItemService : IObjectIdService
     {
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace edc_client_dotnet.model
         ///     Only {@link DocumentationItemType#ARTICLE} is accepted.
         /// </summary>
         /// <param name="article">Article the article to add</param>
-        void AddArticle(IDocumentationItem article);
+        void AddArticle(IDocumentationItemService article);
 
         /// <summary>
         ///     Return the list of articles.
@@ -86,7 +86,7 @@ namespace edc_client_dotnet.model
         ///     This list is unmodifiable.
         /// </summary>
         /// <returns>The list of articles</returns>
-        ReadOnlyCollection<IDocumentationItem> GetArticles();
+        ReadOnlyCollection<IDocumentationItemService> GetArticles();
 
         /// <summary>
         ///     Return the number of articles contained by this DocumentationItem
@@ -100,7 +100,7 @@ namespace edc_client_dotnet.model
         ///     All is accepted excepted {@link DocumentationItemType}.
         /// </summary>
         /// <param name="link">the link to add</param>
-        void AddLink(IDocumentationItem link);
+        void AddLink(IDocumentationItemService link);
 
         /// <summary>
         ///     Return the list of links.
@@ -108,7 +108,7 @@ namespace edc_client_dotnet.model
         ///     This list is unmodifiable.
         /// </summary>
         /// <returns>The list of links</returns>
-        ReadOnlyCollection<IDocumentationItem> GetLinks();
+        ReadOnlyCollection<IDocumentationItemService> GetLinks();
 
         /// <summary>
         ///     Return the number of links contained by this DocumentationItem

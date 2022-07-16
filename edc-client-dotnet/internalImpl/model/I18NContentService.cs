@@ -11,7 +11,6 @@ namespace edc_client_dotnet.internalImpl.model
         public string GetTranslation(string lang, string type, string key, string publicationId)
         {
             return translation.GetValueOrDefault(lang + "." + type + "." + key);
-            
         }       
 
         public void SetMessage(string lang, string type, string key, string value)

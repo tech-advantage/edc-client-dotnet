@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace edc_client_dotnet.utils
+﻿namespace edc_client_dotnet.utils
 {
     public interface IKeyUtil
     {

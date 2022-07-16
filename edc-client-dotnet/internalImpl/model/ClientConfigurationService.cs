@@ -9,8 +9,6 @@ namespace edc_client_dotnet.internalImpl.model
         private String webHelpContext = "/help";
         private String documentationContext = "/doc";
 
-     
-
         public string GetDocumentationContext()
         {
              return documentationContext;

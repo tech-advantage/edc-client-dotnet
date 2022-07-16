@@ -73,9 +73,10 @@ namespace edc_client_dotnet.internalImpl.model
             this.publicationId = publicationId;
         }
 
-        public void SetUrl(string url)
+        public void SetUrl(string? url)
         {
-            this.url = url;
+            if (url is not null)
+                this.url = url;
         }
 
         ReadOnlyCollection<IDocumentationItemService> IDocumentationItemService.GetArticles()

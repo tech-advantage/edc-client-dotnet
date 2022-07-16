@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 
-
 namespace edc_client_dotnet.model
 {
     public interface IDocumentationItemService : IObjectIdService

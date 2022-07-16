@@ -30,7 +30,7 @@ namespace edc_client_dotnet.model
         ///     It's the real path on the documentation server.
         /// </summary>
         /// <param name="url">url the url to set</param>
-        void SetUrl(String url);
+        void SetUrl(String? url);
 
         /// <summary>
         ///     Get the publication id.

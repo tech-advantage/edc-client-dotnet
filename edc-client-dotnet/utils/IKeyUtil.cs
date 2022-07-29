@@ -8,8 +8,8 @@
         /// <param name="mainKey"></param>
         /// <param name="subKey"></param>
         /// <param name="languageCode"></param>
-        /// <returns></returns>
-        String getKey(String mainKey, String subKey, String languageCode);
+        /// <returns>the key</returns>
+        String GetKey(String mainKey, String subKey, String languageCode);
 
         /// <summary>
         ///     Check if the full key contains the main and subKey
@@ -18,6 +18,6 @@
         /// <param name="mainKey">a main key</param>
         /// <param name="subKey">a sub key</param>
         /// <returns>returns true if mainKey.subKey is present for any language</returns>
-        Boolean containsKey(String fullKey, String mainKey, String subKey);
+        Boolean ContainsKey(String fullKey, String mainKey, String subKey);
     }
 }

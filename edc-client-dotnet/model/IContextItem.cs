@@ -1,7 +1,8 @@
 ﻿
 namespace edc_client_dotnet.model
 {
-    public interface IContextItemService
+    // This class is a specialized DocumentationItem for the contextual content (bricks)
+    public interface IContextItem : IDocumentationItem
     {
 
         /// <summary>
@@ -13,7 +14,7 @@ namespace edc_client_dotnet.model
         /// <summary>
         ///     Define the description
         /// </summary>
-        /// <param name="description">description the description to set</param>
+        /// <param name="description">the description to set</param>
         void SetDescription(String description);
 
         /// <summary>
@@ -25,7 +26,7 @@ namespace edc_client_dotnet.model
         /// <summary>
         ///     Define the main key
         /// </summary>
-        /// <param name="mainKey">mainKey the main key to set</param>
+        /// <param name="mainKey">the main key to set</param>
         void SetMainKey(String mainKey);
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace edc_client_dotnet.model
         /// <summary>
         ///     Define the secondary key
         /// </summary>
-        /// <param name="subKey">subKey the secondary key to set</param>
+        /// <param name="subKey">the secondary key to set</param>
         void SetSubKey(String subKey);
     }
 }

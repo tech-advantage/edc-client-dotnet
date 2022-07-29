@@ -1,9 +1,5 @@
 ﻿using edc_client_dotnet.model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace edc_client_dotnet
 {
@@ -24,9 +20,9 @@ namespace edc_client_dotnet
         /// <summary>
         ///     Return the information for each present publication
         /// </summary>
-        /// <returns>a map with publication id as key and information as value</returns>
+        /// <returns>a dictionary with publication id as key and information as value</returns>
         /// <exception cref="IOException">if an error occurred while getting the file</exception>
         /// <exception cref="InvalidUrlException">if the url was not valid</exception>
-        Dictionary<String, IInformationService> GetPublicationInformation();
+        ReadOnlyDictionary<String, IInformation> GetPublicationInformation();
     }
 }

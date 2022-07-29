@@ -1,7 +1,7 @@
 ﻿
 namespace edc_client_dotnet.model
 {
-    public interface IClientConfigurationService
+    public interface IClientConfiguration
     {
 
         /// <summary>
@@ -14,7 +14,7 @@ namespace edc_client_dotnet.model
         ///     Define the server url like http:/localhost:8080/.
         ///     The url is just the protocol, the host and the port.
         /// </summary>
-        /// <param name="serverUrl">serverUrl the server url to set</param>
+        /// <param name="serverUrl">the server url to set</param>
         void SetServerUrl(String serverUrl);
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace edc_client_dotnet.model
         /// <summary>
         ///     Define the WebHelp context.
         /// </summary>
-        /// <param name="webHelpContext">webHelpContext the WebHelp context to set.</param>
+        /// <param name="webHelpContext">the WebHelp context to set.</param>
         /// <exception cref="InvalidUrlException">if the context is null</exception>
         void SetWebHelpContext(String webHelpContext);
 
@@ -45,7 +45,7 @@ namespace edc_client_dotnet.model
         /// <summary>
         ///     Define the documentation context.
         /// </summary>
-        /// <param name="documentationContext">documentationContext the documentation context to set</param>
+        /// <param name="documentationContext">the documentation context to set</param>
         /// <exception cref="InvalidUrlException">if the context is null</exception>
         void SetDocumentationContext(String documentationContext);
 

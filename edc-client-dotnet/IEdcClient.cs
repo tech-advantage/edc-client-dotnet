@@ -3,6 +3,7 @@ using edc_client_dotnet.model;
 
 namespace edc_client_dotnet
 {
+    // EdcClient is the utility class to get all information about documentation.
     public interface IEdcClient
     {
         /// <summary>
@@ -23,10 +24,10 @@ namespace edc_client_dotnet
         ///     <p>
         ///     The language code is 2 digits in lowercase ie fr, en, ...
         /// </summary>
-        /// <param name="mainKey"></param>
-        /// <param name="subKey"></param>
-        /// <param name="rank"></param>
-        /// <param name="languageCode"></param>
+        /// <param name="mainKey">the main key</param>
+        /// <param name="subKey">the sub key</param>
+        /// <param name="rank">the rank</param>
+        /// <param name="languageCode">the language code</param>
         /// <returns>the url</returns>
         /// <exception cref="IOException">if an error is occurred on reading</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
@@ -55,7 +56,7 @@ namespace edc_client_dotnet
         /// <returns>the context item</returns>
         /// <exception cref="IOException">if an error is occurred on reading</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        IContextItemService GetContextItem(String mainKey, String subKey, String languageCode);
+        IContextItem GetContextItem(String mainKey, String subKey, String languageCode);
 
         /// <summary>
         ///     Return the label translation for the given key
@@ -123,6 +124,6 @@ namespace edc_client_dotnet
         /// </summary>
         /// <exception cref="IOException">if an is occurred on reading information</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        void loadContext();
+        void LoadContext();
     }
 }

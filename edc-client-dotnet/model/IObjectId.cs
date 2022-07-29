@@ -1,6 +1,6 @@
 ﻿namespace edc_client_dotnet.model
 {
-    public interface IObjectIdService
+    public interface IObjectId
     {
         long GetId();
 

@@ -1,6 +1,7 @@
 ﻿namespace edc_client_dotnet.model
 {
-    public interface IInformationService
+    // This component define the information about the documentation (version, label, ...)
+    public interface IInformation
     {
         String GetDefaultLanguage();
 

@@ -96,7 +96,7 @@ namespace edc_client_dotnet
         ///     Define the server url like http://localhost:8080
         /// </summary>
         /// <param name="serverUrl">the server url</param>
-        void setServerUrl(String serverUrl);
+        void SetServerUrl(String serverUrl);
 
         /// <summary>
         ///     Define the context url ie like doc in http://localhost:8080/doc
@@ -104,7 +104,7 @@ namespace edc_client_dotnet
         /// </summary>
         /// <param name="documentationContextUrl">the documentation context url</param>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        void setDocumentationContextUrl(String documentationContextUrl);
+        void SetDocumentationContextUrl(String documentationContextUrl);
 
         /// <summary>
         ///     Define the context url ie like help in http://localhost:8080/help

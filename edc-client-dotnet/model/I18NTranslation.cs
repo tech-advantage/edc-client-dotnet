@@ -2,7 +2,7 @@
 
 namespace edc_client_dotnet.model
 {
-    public enum I18NTranslationService
+    public enum I18NTranslation
     {
         /// <summary>
         ///     I18N Default language code

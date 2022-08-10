@@ -5,11 +5,11 @@ namespace edc_client_dotnet.utils
     public interface ITranslationUtil
     {
         /// <summary>
-        ///     Return a map of default languages by publication id
+        ///     Return a Dictionary of default languages by publication id
         /// </summary>
-        /// <param name="information">the map containing the publication id as key and information as value</param>
-        /// <returns>a map of publication id as key and default content language code as value</returns>
-        Dictionary<String, string> GetPublicationDefaultLanguages(Dictionary<String, IInformation> information);
+        /// <param name="information">the Dictionary containing the publication id as key and information as value</param>
+        /// <returns>a Dictionary of publication id as key and default content language code as value</returns>
+        SortedDictionary<String, String> GetPublicationDefaultLanguages(SortedDictionary<String, IInformation> information);
 
         /// <summary>
         ///     Check labels consistency

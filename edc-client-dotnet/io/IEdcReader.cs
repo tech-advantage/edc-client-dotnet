@@ -5,8 +5,8 @@ namespace edc_client_dotnet.io
     public interface IEdcReader
     {
         /// <summary>
-        ///     Read all context items and associate it in the map.
-        ///     The key of the map is the contextual key and he value is the associated context.
+        ///     Read all context items and associate it in the Dictionary.
+        ///     The key of the Dictionary is the contextual key and he value is the associated context.
         /// </summary>
         /// <returns>a dictionary which associate the contextual key with the content item.</returns>
         /// <exception cref="IOException">if an IO error occurred during the read</exception>

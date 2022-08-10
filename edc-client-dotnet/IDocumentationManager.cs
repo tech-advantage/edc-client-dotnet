@@ -17,7 +17,7 @@ namespace edc_client_dotnet
         /// <returns>the context item or null</returns>
         /// <exception cref="IOException">if an error is occurred on reading</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        IContextItem GetContext(String mainKey, String subKey, String languageCode, Dictionary<String, String> defaultLanguages);
+        IContextItem GetContext(String mainKey, String subKey, String languageCode, IReadOnlyDictionary<String, String> defaultLanguages);
 
         /// <summary>
         ///     Force the reload of the documentation definition on the next call.

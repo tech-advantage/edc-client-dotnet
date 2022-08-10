@@ -14,7 +14,7 @@ namespace edc_client_dotnet
         ///     These labels are read from the i18n files present in the documentation root folder
         ///     
         /// </summary>
-        /// <param name="publicationInformation">a map containing all the publication information for every publication</param>
+        /// <param name="publicationInformation">a Dictionary containing all the publication information for every publication</param>
         /// <exception cref="IOException">if an IO error occurred</exception>
         /// <exception cref="InvalidUrlException">if the i18n files urls were not valid</exception>
         void LoadTranslations(ReadOnlyDictionary<String, IInformation> publicationInformation);
@@ -47,9 +47,9 @@ namespace edc_client_dotnet
         String GetError(String errorKey, String languageCode, String publicationId);
 
         /// <summary>
-        ///     Return a Map with the default language for each publication
+        ///     Return a Dictionary with the default language for each publication
         /// </summary>
-        /// <returns>a Map containing the publication id as key, default language code as value</returns>
-        Dictionary<String, String> GetDefaultPublicationLangugages();
+        /// <returns>a Dictionary containing the publication id as key, default language code as value</returns>
+        ReadOnlyDictionary<String, String> GetDefaultPublicationLanguages();
     }
 }

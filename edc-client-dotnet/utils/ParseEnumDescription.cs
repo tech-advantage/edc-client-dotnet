@@ -5,7 +5,7 @@ namespace edc_client_dotnet.utils
 {
     public static class ParseEnumDescription
     {
-        public static string GetDescription(this Enum e)
+        public static String GetDescription(Enum e)
         {
             var attribute =
                 e.GetType()

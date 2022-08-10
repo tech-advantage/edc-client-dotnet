@@ -1,24 +1,40 @@
-﻿
+﻿using edc_client_dotnet.model;
+
 namespace edc_client_dotnet.internalImpl.http
 {
-    public class HttpClientDotnet
+    public class HttpClientDotnet : HttpClient
     {
-        public String GetResponseFromURI(String u)
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="InvalidUrlException"></exception>
+        public String GetAsyncResponse(String url)
         {
-            String result = "";
-            using (var client = new HttpClient())
+            HttpResponseMessage response;
+            String result;
+
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    result = client.GetStringAsync(u).Result;
+                    response = client.GetAsync(url).Result;
+                    int statusCode = (int)response.StatusCode;
+                    if (statusCode >= 400 && statusCode < 500)
+                    {
+                        throw new Error4xxException("The url '" + url + "' return " + response.StatusCode);
+                    }
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        result = response.Content.ReadAsStringAsync().Result;
+                        return result;
+                    }
                 }
                 catch(Exception ex)
                 {
-                     Console.WriteLine(ex.Message);
+                    throw new Error4xxException(ex.Message);
                 }
                 
             }
-            return result;
+            return null;
         }
     }
 }

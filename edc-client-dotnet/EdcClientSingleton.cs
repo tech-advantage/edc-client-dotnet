@@ -1,80 +1,93 @@
-﻿using edc_client_dotnet.model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using edc_client_dotnet.Injection;
+using edc_client_dotnet.model;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace edc_client_dotnet
 {
     public class EdcClientSingleton : IEdcClient
     {
-        private static EdcClientSingleton instance = null;
-        private IEdcClient edcClient;
+        private static EdcClientSingleton? _instance = null;
+        private IEdcClient _edcClient;
 
-        private EdcClientSingleton() : base() { }
+        private EdcClientSingleton() : base() {}
 
-        //public static EdcClientSingleton GetInstance()
-        //{
-        //    if(instance == null)
-        //    {
-        //        instance = new EdcClientSingleton();
-        //        instance.init()
-        //    }
-        //}
-        public void ForceReload()
+        public static EdcClientSingleton GetInstance()
         {
-            throw new NotImplementedException();
+            if (_instance == null)
+            {
+                _instance = new EdcClientSingleton();
+                _instance.Init();
+            }
+            return _instance;
         }
 
-        public IContextItemService GetContextItem(string mainKey, string subKey, string languageCode)
+        private void Init()
         {
-            throw new NotImplementedException();
+            Startup.ConfigureServices();
+            _edcClient = Startup.serviceProvider.GetRequiredService<IEdcClient>();
         }
 
-        public string GetContextWebHelpUrl(string mainKey, string subKey, string languageCode)
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="InvalidUrlException"></exception>
+        public String GetContextWebHelpUrl(String mainKey, String subKey, String languageCode)
         {
-            throw new NotImplementedException();
+            return _edcClient.GetContextWebHelpUrl(mainKey, subKey, languageCode);
         }
 
-        public string GetContextWebHelpUrl(string mainKey, string subKey, int rank, string languageCode)
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="InvalidUrlException"></exception>
+        public String GetContextWebHelpUrl(String mainKey, String subKey, int rank, String languageCode)
         {
-            throw new NotImplementedException();
+            return _edcClient.GetContextWebHelpUrl(mainKey, subKey, rank, languageCode);
         }
 
-        public string GetDocumentationWebHelpUrl(long id, string languageCode, string srcPublicationId)
+        /// <exception cref="InvalidUrlException"></exception>
+        public String GetDocumentationWebHelpUrl(long id, String languageCode, String srcPublicationId)
         {
-            throw new NotImplementedException();
+            return _edcClient.GetDocumentationWebHelpUrl(id, languageCode, srcPublicationId);
         }
 
-        public string GetError(string errorKey, string languageCode, string publicationId)
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="InvalidUrlException"></exception>
+        public IContextItem GetContextItem(String mainKey, String subKey, String languageCode)
         {
-            throw new NotImplementedException();
+            return _edcClient.GetContextItem(mainKey, subKey, languageCode);
         }
 
-        public string GetLabel(string labelKey, string languageCode, string publicationId)
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="InvalidUrlException"></exception>
+        public String GetLabel(String labelKey, String languageCode, String publicationId)
         {
-            throw new NotImplementedException();
+            return _edcClient.GetLabel(labelKey, languageCode, publicationId);
         }
 
-        public void loadContext()
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="InvalidUrlException"></exception>
+        public String GetError(String errorKey, String languageCode, String publicationId)
         {
-            throw new NotImplementedException();
+            return _edcClient.GetError(errorKey, languageCode, publicationId);
         }
 
-        public void setDocumentationContextUrl(string documentationContextUrl)
-        {
-            throw new NotImplementedException();
+        public void SetServerUrl(String serverUrl){
+            _edcClient.SetServerUrl(serverUrl);
         }
 
-        public void setServerUrl(string serverUrl)
+        /// <exception cref="InvalidUrlException"></exception>
+        public void SetWebHelpContextUrl(String webHelpContextUrl)
         {
-            throw new NotImplementedException();
+            _edcClient.SetWebHelpContextUrl(webHelpContextUrl);
         }
 
-        public void SetWebHelpContextUrl(string webHelpContextUrl)
+        /// <exception cref="InvalidUrlException"></exception>
+        public void SetDocumentationContextUrl(String documentationContextUrl)
         {
-            throw new NotImplementedException();
+            _edcClient.SetDocumentationContextUrl(documentationContextUrl);
         }
+
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="InvalidUrlException"></exception>
+        public void LoadContext() { _edcClient.LoadContext(); }
+
+        public void ForceReload() { _edcClient.ForceReload(); }
     }
 }

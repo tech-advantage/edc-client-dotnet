@@ -40,7 +40,7 @@ namespace edc_client_dotnet.internalImpl.io
 
         /// <exception cref="IOException"></exception>
         /// <exception cref="InvalidUrlException"></exception>
-        public Dictionary<String, IContextItem> ReadContext()
+        public Dictionary<String, IContextItem> GetContext()
         {
             Dictionary<String, IContextItem> contexts = new Dictionary<String, IContextItem>();
            
@@ -53,13 +53,16 @@ namespace edc_client_dotnet.internalImpl.io
 
         /// <exception cref="IOException"></exception>
         /// <exception cref="InvalidUrlException"></exception>
-        public Dictionary<String, IInformation> ReadInfo()
+        public Dictionary<String, IInformation> GetInformations()
         {
             Dictionary<String, IInformation> information = new Dictionary<String, IInformation>();
             foreach (String publicationId in ReadPublicationIds())
             {
                 IInformation info = ReadInfoFile(publicationId);
-                information.Add(publicationId, info);
+                if(info is not null)
+                {
+                    information.Add(publicationId, info);
+                }
             }
             return information;
         }
@@ -88,7 +91,7 @@ namespace edc_client_dotnet.internalImpl.io
                 if (jsonContent is JObject)
                 {
                     HashSet<String> languages = new HashSet<String>();
-                    String defaultLangCode = jsonContent["defaultLanguage"].Value<String>() != null ? jsonContent["defaultLanguage"].Value<String>() : ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE);
+                    String defaultLangCode = jsonContent["defaultLanguage"]?.Value<String>() != null ? jsonContent["defaultLanguage"].Value<String>() : ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE);
                     information.SetDefaultLanguage(defaultLangCode);
                     _logger.Debug("Setting default Language from info.json : {}", defaultLangCode);
                     IList<JToken> presentLanguage = jsonContent["languages"].Children().ToList();
@@ -97,7 +100,6 @@ namespace edc_client_dotnet.internalImpl.io
                     {
                         foreach (JToken lang in presentLanguage)
                         {
-                            // JToken.ToObject is a helper method that uses JsonSerializer internally
                             languages.Add(lang.ToString());
                         }
                     }

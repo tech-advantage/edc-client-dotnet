@@ -26,7 +26,7 @@ namespace edc_client_dotnet_test.internalImpl.io
         {
             IKeyUtil keyUtil = new KeyUtilImpl();
 
-            Dictionary<String, IContextItem> contextItemDictionary = _edcReader.ReadContext();
+            Dictionary<String, IContextItem> contextItemDictionary = _edcReader.GetContext();
             Assert.AreEqual(39, contextItemDictionary.Count);
 
             IContextItem contextItem = contextItemDictionary.GetValueOrDefault(keyUtil.GetKey("fr.techad.edc", "help.center", "en"));

@@ -11,7 +11,7 @@ namespace edc_client_dotnet.io
         /// <returns>a dictionary which associate the contextual key with the content item.</returns>
         /// <exception cref="IOException">if an IO error occurred during the read</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        Dictionary<String, IContextItem> ReadContext();
+        Dictionary<String, IContextItem> GetContext();
 
         /// <summary>
         ///     Read the export information, for every publication, from the info.json files

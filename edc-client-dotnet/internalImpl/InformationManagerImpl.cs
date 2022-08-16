@@ -16,7 +16,7 @@ namespace edc_client_dotnet.internalImpl
         {
             if (_information.Any())
             {
-                foreach(KeyValuePair<String, IInformation> entry in _reader.ReadInfo())
+                foreach(KeyValuePair<String, IInformation> entry in _reader.GetInformations())
                 {
                     _information.Add(entry.Key, entry.Value);
                 }

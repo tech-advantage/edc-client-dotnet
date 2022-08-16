@@ -20,21 +20,5 @@ namespace edc_client_dotnet.internalImpl.model
             _logger.Debug("Set Message traduction lang: {}, type: {}, key: {}, value: {} ", lang, type, key, value);
             _translation.Add(lang + "." + type + "." + key, value);
         }
-
-        public void SetI18nLabel(Dictionary<String, String> i18nLabel)
-        {
-            foreach (var content in i18nLabel)
-            {
-                _i18nLabels.Add(content.Key, content.Value);
-            }
-        }
-
-        public void SetI18nError(Dictionary<String, String> i18nError)
-        {
-            foreach (var content in i18nError)
-            {
-                _i18nErrors.Add(content.Key, content.Value);
-            }
-        }
     }
 }

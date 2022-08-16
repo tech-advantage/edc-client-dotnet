@@ -8,7 +8,7 @@ namespace edc_client_dotnet.internalImpl
     {
         private IEdcReader _reader;
         private IKeyUtil _keyUtil;
-        private Dictionary<String, IContextItem> _contexts;
+        private Dictionary<String, IContextItem>? _contexts;
         private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
 
         public DocumentationManagerImpl(IEdcReader reader, IKeyUtil keyBuilder)
@@ -43,7 +43,7 @@ namespace edc_client_dotnet.internalImpl
             if(_contexts == null)
             {
                 _logger.Debug("No contexts defined, read it");
-                _contexts = _reader.ReadContext();
+                _contexts = _reader.GetContext();
             }
         }
 

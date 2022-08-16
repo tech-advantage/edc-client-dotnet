@@ -242,7 +242,7 @@ namespace edc_client_dotnet.internalImpl.io
             foreach (JObject linkJson in links)
             {
                 _logger.Debug("link to decode: {}", linkJson);
-                DocumentationItemType linksType = linkJson["type"].Value<String>() == "CHAPTER" ? DocumentationItemType.CHAPTER : linkJson["type"].Value<String>() == "DOCUMENT" ? DocumentationItemType.DOCUMENT : DocumentationItemType.UNKNOWN;
+                DocumentationItemType linksType = linkJson["type"]?.Value<String>() == "CHAPTER" ? DocumentationItemType.CHAPTER : linkJson["type"]?.Value<String>() == "DOCUMENT" ? DocumentationItemType.DOCUMENT : DocumentationItemType.UNKNOWN;
                 IDocumentationItem link = _documentationItemFactory.Create();
                 link.SetDocumentationItemType(linksType);
                 link.SetLanguageCode(languageCode);

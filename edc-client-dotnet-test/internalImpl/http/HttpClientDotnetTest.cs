@@ -1,4 +1,4 @@
-﻿namespace edc_client_dotnet_test.internalImpl.http
+﻿namespace edcClientDotnetTest.internalImpl.http
 {
     [TestClass]
     public class HttpClientDotnetTest

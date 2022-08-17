@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet
+namespace edcClientDotnet
 {
     /// DocumentationManager manage all content of the documentation.
     public interface IDocumentationManager

@@ -1,8 +1,8 @@
-﻿using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.model;
+using edcClientDotnet.utils;
 using System.Collections;
 
-namespace edc_client_dotnet.internalImpl
+namespace edcClientDotnet.internalImpl
 {
     public class TranslationConstants : IEnumerable<String>
     {

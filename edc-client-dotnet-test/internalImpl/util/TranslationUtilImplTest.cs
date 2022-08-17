@@ -1,10 +1,10 @@
-﻿using edc_client_dotnet.Injection;
-using edc_client_dotnet.Injection.factory;
-using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.Injection;
+using edcClientDotnet.Injection.factory;
+using edcClientDotnet.model;
+using edcClientDotnet.utils;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace edc_client_dotnet_test.internalImpl.util
+namespace edcClientDotnetTest.internalImpl.util
 {
     [TestClass]
     public class TranslationUtilImplTest : CommonBase

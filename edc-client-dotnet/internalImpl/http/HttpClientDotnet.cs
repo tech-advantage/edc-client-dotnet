@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet.internalImpl.http
+namespace edcClientDotnet.internalImpl.http
 {
     public class HttpClientDotnet : HttpClient
     {

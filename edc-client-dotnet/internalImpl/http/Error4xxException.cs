@@ -1,4 +1,4 @@
-﻿namespace edc_client_dotnet.internalImpl.http
+﻿namespace edcClientDotnet.internalImpl.http
 {
     public class Error4xxException : Exception
     {

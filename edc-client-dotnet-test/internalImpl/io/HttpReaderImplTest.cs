@@ -1,9 +1,9 @@
-﻿using edc_client_dotnet.internalImpl.util;
-using edc_client_dotnet.io;
-using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.internalImpl.util;
+using edcClientDotnet.io;
+using edcClientDotnet.model;
+using edcClientDotnet.utils;
 
-namespace edc_client_dotnet_test.internalImpl.io
+namespace edcClientDotnetTest.internalImpl.io
 {
 
     [TestClass]

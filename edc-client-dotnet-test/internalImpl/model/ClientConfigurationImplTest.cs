@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet_test.internalImpl.model
+namespace edcClientDotnetTest.internalImpl.model
 {
     [TestClass]
     public class ClientConfigurationImplTest : CommonBase

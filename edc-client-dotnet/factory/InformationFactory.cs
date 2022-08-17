@@ -1,7 +1,7 @@
-﻿using edc_client_dotnet.internalImpl.model;
-using edc_client_dotnet.model;
+﻿using edcClientDotnet.internalImpl.model;
+using edcClientDotnet.model;
 
-namespace edc_client_dotnet.Injection.factory
+namespace edcClientDotnet.Injection.factory
 {
     public class InformationFactory
     {

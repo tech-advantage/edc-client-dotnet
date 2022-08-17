@@ -1,8 +1,8 @@
-﻿using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
-using static edc_client_dotnet.model.I18NTranslation;
+﻿using edcClientDotnet.model;
+using edcClientDotnet.utils;
+using static edcClientDotnet.model.I18NTranslation;
 
-namespace edc_client_dotnet.internalImpl.model
+namespace edcClientDotnet.internalImpl.model
 {
 
     public class InformationImpl : IInformation

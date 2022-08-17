@@ -1,7 +1,7 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 using System.Collections.ObjectModel;
 
-namespace edc_client_dotnet
+namespace edcClientDotnet
 {
     public interface ITranslationManager
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace edc_client_dotnet.model
+namespace edcClientDotnet.model
 {
     // This class is a specialized DocumentationItem for the contextual content (bricks)
     public interface IContextItem : IDocumentationItem

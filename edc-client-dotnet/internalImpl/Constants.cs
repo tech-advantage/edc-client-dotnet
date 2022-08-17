@@ -1,4 +1,4 @@
-﻿namespace edc_client_dotnet.internalImpl
+﻿namespace edcClientDotnet.internalImpl
 {
     public class Constants
     {

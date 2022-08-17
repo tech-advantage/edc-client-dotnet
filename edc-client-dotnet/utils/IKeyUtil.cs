@@ -1,4 +1,4 @@
-﻿namespace edc_client_dotnet.utils
+﻿namespace edcClientDotnet.utils
 {
     public interface IKeyUtil
     {

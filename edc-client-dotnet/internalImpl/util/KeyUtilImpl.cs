@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.utils;
+﻿using edcClientDotnet.utils;
 
-namespace edc_client_dotnet.internalImpl.util
+namespace edcClientDotnet.internalImpl.util
 {
     public class KeyUtilImpl : IKeyUtil
     {

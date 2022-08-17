@@ -1,13 +1,13 @@
-﻿using edc_client_dotnet.factory;
-using edc_client_dotnet.Injection.factory;
-using edc_client_dotnet.internalImpl.http;
-using edc_client_dotnet.io;
-using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.factory;
+using edcClientDotnet.Injection.factory;
+using edcClientDotnet.internalImpl.http;
+using edcClientDotnet.io;
+using edcClientDotnet.model;
+using edcClientDotnet.utils;
 using Newtonsoft.Json.Linq;
-using static edc_client_dotnet.model.I18NTranslation;
+using static edcClientDotnet.model.I18NTranslation;
 
-namespace edc_client_dotnet.internalImpl.io
+namespace edcClientDotnet.internalImpl.io
 {
     public class HttpReaderImpl : IEdcReader
     {

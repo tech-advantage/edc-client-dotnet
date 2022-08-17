@@ -1,8 +1,8 @@
-﻿using edc_client_dotnet.io;
-using edc_client_dotnet.model;
+﻿using edcClientDotnet.io;
+using edcClientDotnet.model;
 using System.Collections.ObjectModel;
 
-namespace edc_client_dotnet.internalImpl
+namespace edcClientDotnet.internalImpl
 {
     public class InformationManagerImpl : IInformationManager
     {

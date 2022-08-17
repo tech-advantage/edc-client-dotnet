@@ -1,8 +1,8 @@
-using edc_client_dotnet;
-using edc_client_dotnet.model;
+using edcClientDotnet;
+using edcClientDotnet.model;
 using Newtonsoft.Json;
 
-namespace edc_client_dotnet_test;
+namespace edcClientDotnetTest;
 
 [TestClass]
 public class EdcClientSingletonTest

@@ -1,7 +1,7 @@
-﻿using edc_client_dotnet;
-using edc_client_dotnet.model;
+﻿using edcClientDotnet;
+using edcClientDotnet.model;
 
-namespace edc_client_dotnet_test.internalImpl
+namespace edcClientDotnetTest.internalImpl
 {
     [TestClass]
     public class EdcClientImplTest : CommonBase

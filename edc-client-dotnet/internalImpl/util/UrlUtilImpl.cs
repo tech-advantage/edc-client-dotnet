@@ -1,7 +1,7 @@
-﻿using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.model;
+using edcClientDotnet.utils;
 
-namespace edc_client_dotnet.internalImpl.util
+namespace edcClientDotnet.internalImpl.util
 {
     public class UrlUtilImpl : IUrlUtil
     {

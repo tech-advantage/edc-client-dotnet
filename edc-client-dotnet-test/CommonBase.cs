@@ -1,18 +1,18 @@
-﻿using edc_client_dotnet;
-using edc_client_dotnet.factory;
-using edc_client_dotnet.Injection;
-using edc_client_dotnet.Injection.factory;
-using edc_client_dotnet.internalImpl;
-using edc_client_dotnet.internalImpl.http;
-using edc_client_dotnet.internalImpl.io;
-using edc_client_dotnet.internalImpl.model;
-using edc_client_dotnet.internalImpl.util;
-using edc_client_dotnet.io;
-using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet;
+using edcClientDotnet.factory;
+using edcClientDotnet.Injection;
+using edcClientDotnet.Injection.factory;
+using edcClientDotnet.internalImpl;
+using edcClientDotnet.internalImpl.http;
+using edcClientDotnet.internalImpl.io;
+using edcClientDotnet.internalImpl.model;
+using edcClientDotnet.internalImpl.util;
+using edcClientDotnet.io;
+using edcClientDotnet.model;
+using edcClientDotnet.utils;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace edc_client_dotnet_test
+namespace edcClientDotnetTest
 {
     public abstract class CommonBase
     {

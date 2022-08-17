@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace edc_client_dotnet.model
+namespace edcClientDotnet.model
 {
     /// This class define a documentation component.
     public interface IDocumentationItem : IObjectId

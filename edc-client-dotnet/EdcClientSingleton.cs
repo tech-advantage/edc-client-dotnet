@@ -1,8 +1,8 @@
-﻿using edc_client_dotnet.Injection;
-using edc_client_dotnet.model;
+﻿using edcClientDotnet.Injection;
+using edcClientDotnet.model;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace edc_client_dotnet
+namespace edcClientDotnet
 {
     public class EdcClientSingleton : IEdcClient
     {

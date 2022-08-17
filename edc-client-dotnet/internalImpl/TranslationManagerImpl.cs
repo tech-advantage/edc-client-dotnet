@@ -1,9 +1,9 @@
-﻿using edc_client_dotnet.io;
-using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.io;
+using edcClientDotnet.model;
+using edcClientDotnet.utils;
 using System.Collections.ObjectModel;
 
-namespace edc_client_dotnet.internalImpl
+namespace edcClientDotnet.internalImpl
 {
     public class TranslationManagerImpl : ITranslationManager
     {

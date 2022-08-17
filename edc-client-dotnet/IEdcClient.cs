@@ -1,7 +1,7 @@
 ﻿
-using edc_client_dotnet.model;
+using edcClientDotnet.model;
 
-namespace edc_client_dotnet
+namespace edcClientDotnet
 {
     // EdcClient is the utility class to get all information about documentation.
     public interface IEdcClient

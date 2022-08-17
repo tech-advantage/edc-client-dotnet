@@ -1,7 +1,7 @@
-﻿using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.model;
+using edcClientDotnet.utils;
 
-namespace edc_client_dotnet.internalImpl
+namespace edcClientDotnet.internalImpl
 {
     public class EdcClientImpl : IEdcClient
     {

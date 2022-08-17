@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace edc_client_dotnet.utils
+namespace edcClientDotnet.utils
 {
     public static class ParseEnumDescription
     {

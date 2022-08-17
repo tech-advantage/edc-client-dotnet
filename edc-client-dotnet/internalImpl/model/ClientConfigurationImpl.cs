@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet.internalImpl.model
+namespace edcClientDotnet.internalImpl.model
 {
     public class ClientConfigurationImpl : IClientConfiguration
     {

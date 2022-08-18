@@ -1,4 +1,5 @@
 ﻿using edcClientDotnet.model;
+using NLog;
 
 namespace edcClientDotnet.internalImpl.model
 {
@@ -7,7 +8,7 @@ namespace edcClientDotnet.internalImpl.model
         Dictionary<String, String> _translation = new Dictionary<String, String>();
         private Dictionary<String, String> _i18nLabels = new Dictionary<String, String>();
         private Dictionary<String, String> _i18nErrors = new Dictionary<String, String>();
-        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         public String GetTranslation(String lang, String type, String key, String publicationId)
         {

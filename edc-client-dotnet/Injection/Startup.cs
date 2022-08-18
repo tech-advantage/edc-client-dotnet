@@ -1,5 +1,5 @@
-﻿using edcClientDotnet.factory;
-using edcClientDotnet.Injection.factory;
+﻿using edcClientDotnet.factory.impl;
+using edcClientDotnet.factory.model;
 using edcClientDotnet.internalImpl;
 using edcClientDotnet.internalImpl.http;
 using edcClientDotnet.internalImpl.io;
@@ -32,18 +32,10 @@ namespace edcClientDotnet.Injection
             services.AddTransient<ITranslationUtil, TranslationUtilImpl>();
             services.AddTransient<IEdcReader, HttpReaderImpl>();
 
-            // Factory
-            services.AddTransient<ContextItemFactory>();
-            services.AddTransient<ContextItemImpl>().AddTransient<IContextItem, ContextItemImpl>(s => s.GetService<ContextItemImpl>());
-
-            services.AddTransient<DocumentationItemFactory>();
-            services.AddTransient<DocumentationItemImpl>().AddTransient<IDocumentationItem, DocumentationItemImpl>(s => s.GetService<DocumentationItemImpl>());
-
-            services.AddTransient<I18NFactory>();
-            services.AddTransient<I18NContentImpl>().AddTransient<II18NContent, I18NContentImpl>(s => s.GetService<I18NContentImpl>());
-
-            services.AddTransient<InformationFactory>();
-            services.AddTransient<InformationImpl>().AddTransient<IInformation, InformationImpl>(s => s.GetService<InformationImpl>());
+            services.AddTransient<IContextItemFactory, ContextItemFactory>();
+            services.AddTransient<IDocumentationItemFactory, DocumentationItemFactory>();
+            services.AddTransient<IInformationFactory, InformationFactory>();
+            services.AddTransient<II18NFactory, I18NFactory>();
 
             serviceProvider = services.BuildServiceProvider();
         }

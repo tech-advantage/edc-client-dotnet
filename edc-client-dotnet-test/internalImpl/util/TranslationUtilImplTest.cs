@@ -1,8 +1,7 @@
-﻿using edcClientDotnet.Injection;
-using edcClientDotnet.Injection.factory;
+﻿using edcClientDotnet.factory.impl;
+using edcClientDotnet.factory.model;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace edcClientDotnetTest.internalImpl.util
 {
@@ -70,7 +69,7 @@ namespace edcClientDotnetTest.internalImpl.util
 
         private IInformation CreateInformation(String defaultLanguageCode)
         {
-            InformationFactory informationFactory = Startup.serviceProvider.GetService<InformationFactory>();
+            IInformationFactory informationFactory = new InformationFactory();
             IInformation information = informationFactory.Create();
             information.SetDefaultLanguage(defaultLanguageCode);
             return information;

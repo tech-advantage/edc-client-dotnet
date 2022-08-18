@@ -1,6 +1,7 @@
 ﻿using edcClientDotnet.io;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;
+using NLog;
 using System.Collections.ObjectModel;
 
 namespace edcClientDotnet.internalImpl
@@ -14,7 +15,7 @@ namespace edcClientDotnet.internalImpl
         private readonly HashSet<String> _languageCodes = new();
         // The default language code for each publication id
         private readonly Dictionary<String, String> _defaultPublicationLanguages = new();
-        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public TranslationManagerImpl(IEdcReader reader, ITranslationUtil translationUtil)
         {

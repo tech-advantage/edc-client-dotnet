@@ -1,7 +1,6 @@
-﻿using edcClientDotnet;
-using edcClientDotnet.factory;
+﻿using edcClientDotnet.factory.impl;
+using edcClientDotnet;
 using edcClientDotnet.Injection;
-using edcClientDotnet.Injection.factory;
 using edcClientDotnet.internalImpl;
 using edcClientDotnet.internalImpl.http;
 using edcClientDotnet.internalImpl.io;
@@ -10,7 +9,8 @@ using edcClientDotnet.internalImpl.util;
 using edcClientDotnet.io;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;
-using Microsoft.Extensions.DependencyInjection;
+using edcClientDotnetTest.internalImpl;
+using edcClientDotnet.factory.model;
 
 namespace edcClientDotnetTest
 {
@@ -41,10 +41,10 @@ namespace edcClientDotnetTest
             IClientConfiguration clientConfiguration = CreateClientConfiguration();
             IKeyUtil keyUtil = CreateKeyBuilder();
             Startup.ConfigureServices();
-            ContextItemFactory? contextItemFactory = Startup.serviceProvider.GetService<ContextItemFactory>();
-            DocumentationItemFactory? documentationItemFactory = Startup.serviceProvider.GetService<DocumentationItemFactory>();
-            InformationFactory? informationFactory = Startup.serviceProvider.GetService<InformationFactory>();
-            I18NFactory? i18nFactory = Startup.serviceProvider.GetService<I18NFactory>();
+            ContextItemFactory? contextItemFactory = new ContextItemFactory();
+            DocumentationItemFactory? documentationItemFactory = new DocumentationItemFactory();
+            IInformationFactory? informationFactory = new InformationFactory();
+            I18NFactory? i18nFactory = new I18NFactory();
             _edcReader = new HttpReaderImpl(httpClient, clientConfiguration, keyUtil, contextItemFactory, documentationItemFactory, informationFactory, i18nFactory);
 
             return _edcReader;

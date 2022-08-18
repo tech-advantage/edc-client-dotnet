@@ -1,6 +1,7 @@
 using edcClientDotnet;
 using edcClientDotnet.model;
 using Newtonsoft.Json;
+using edcClientDotnetTest.internalImpl;
 
 namespace edcClientDotnetTest;
 
@@ -12,7 +13,7 @@ public class EdcClientSingletonTest
     [TestInitialize]
     public void Setup()
     {
-        EdcClientSingleton.GetInstance().SetServerUrl("https://demo.easydoccontents.com");
+        EdcClientSingleton.GetInstance().SetServerUrl(Constants.SERVER_URL);
         try
         {
             EdcClientSingleton.GetInstance().SetWebHelpContextUrl("help");

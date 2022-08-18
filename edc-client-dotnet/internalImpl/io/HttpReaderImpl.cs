@@ -1,10 +1,10 @@
-﻿using edcClientDotnet.factory;
-using edcClientDotnet.Injection.factory;
+﻿using edcClientDotnet.factory.model;
 using edcClientDotnet.internalImpl.http;
 using edcClientDotnet.io;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;
 using Newtonsoft.Json.Linq;
+using NLog;
 using static edcClientDotnet.model.I18NTranslation;
 
 namespace edcClientDotnet.internalImpl.io
@@ -20,14 +20,14 @@ namespace edcClientDotnet.internalImpl.io
         private readonly HttpClientDotnet _httpClientDotnet;
         private IClientConfiguration _clientConfiguration { get; }
         private readonly IKeyUtil _keyUtil;
-        private readonly ContextItemFactory _contextItemFactory;
-        private readonly DocumentationItemFactory _documentationItemFactory;
-        private InformationFactory _informationFactory;
-        private I18NFactory _i18NFactory;
-        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly IContextItemFactory _contextItemFactory;
+        private IDocumentationItemFactory _documentationItemFactory;
+        private IInformationFactory _informationFactory;
+        private II18NFactory _i18NFactory;
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
         
-        public HttpReaderImpl(HttpClientDotnet httpClientDotnet, IClientConfiguration clientConfigurationService, IKeyUtil keyUtil, ContextItemFactory contextItemFactory,
-                                DocumentationItemFactory documentationItemFactory, InformationFactory informationFactory, I18NFactory i18NFactory)
+        public HttpReaderImpl(HttpClientDotnet httpClientDotnet, IClientConfiguration clientConfigurationService, IKeyUtil keyUtil, IContextItemFactory contextItemFactory,
+                                IDocumentationItemFactory documentationItemFactory, IInformationFactory informationFactory, II18NFactory i18NFactory)
         {
             _httpClientDotnet = httpClientDotnet;
             _clientConfiguration = clientConfigurationService;

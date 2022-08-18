@@ -1,6 +1,7 @@
 ﻿using edcClientDotnet.io;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;
+using NLog;
 
 namespace edcClientDotnet.internalImpl
 {
@@ -9,7 +10,7 @@ namespace edcClientDotnet.internalImpl
         private IEdcReader _reader;
         private IKeyUtil _keyUtil;
         private Dictionary<String, IContextItem>? _contexts;
-        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         public DocumentationManagerImpl(IEdcReader reader, IKeyUtil keyBuilder)
         {

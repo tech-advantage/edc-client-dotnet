@@ -1,5 +1,6 @@
 ﻿using edcClientDotnet.model;
 using edcClientDotnet.utils;
+using NLog;
 
 namespace edcClientDotnet.internalImpl
 {
@@ -10,7 +11,7 @@ namespace edcClientDotnet.internalImpl
         private readonly ITranslationManager _translationManager;
         private readonly IInformationManager _informationManager;
         private readonly IUrlUtil _urlUtil;
-        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public EdcClientImpl(IClientConfiguration clientConfiguration, IDocumentationManager documentationManager,
             IUrlUtil urlUtil, ITranslationManager translationManager, IInformationManager informationManager)

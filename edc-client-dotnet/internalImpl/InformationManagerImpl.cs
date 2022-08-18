@@ -1,5 +1,6 @@
 ﻿using edcClientDotnet.io;
 using edcClientDotnet.model;
+using NLog;
 using System.Collections.ObjectModel;
 
 namespace edcClientDotnet.internalImpl
@@ -8,7 +9,7 @@ namespace edcClientDotnet.internalImpl
     {
         private readonly IEdcReader _reader;
         private readonly Dictionary<String, IInformation> _information = new Dictionary<String, IInformation>();
-        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         public InformationManagerImpl(IEdcReader reader){ _reader = reader; }
 

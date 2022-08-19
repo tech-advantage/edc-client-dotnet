@@ -6,9 +6,10 @@ namespace edcClientDotnet.internalImpl.model
     {
         private long _id;
 
-        public long GetId(){ return _id; }
-
-        public void SetId(long id) { _id = id; }
-        
+        public long ObjectId
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
     }
 }

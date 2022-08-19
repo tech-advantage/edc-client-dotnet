@@ -1,5 +1,5 @@
-﻿using edcClientDotnet.factory.impl;
-using edcClientDotnet.factory.model;
+﻿using edcClientDotnet.factory;
+using edcClientDotnet.internalImpl.factory;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;
 
@@ -71,7 +71,7 @@ namespace edcClientDotnetTest.internalImpl.util
         {
             IInformationFactory informationFactory = new InformationFactory();
             IInformation information = informationFactory.Create();
-            information.SetDefaultLanguage(defaultLanguageCode);
+            information.DefaultLanguage = defaultLanguageCode;
             return information;
         }
 

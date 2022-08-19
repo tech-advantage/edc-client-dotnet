@@ -1,5 +1,4 @@
-﻿using edcClientDotnet.factory.impl;
-using edcClientDotnet;
+﻿using edcClientDotnet;
 using edcClientDotnet.Injection;
 using edcClientDotnet.internalImpl;
 using edcClientDotnet.internalImpl.http;
@@ -10,7 +9,8 @@ using edcClientDotnet.io;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;
 using edcClientDotnetTest.internalImpl;
-using edcClientDotnet.factory.model;
+using edcClientDotnet.internalImpl.factory;
+using edcClientDotnet.factory;
 
 namespace edcClientDotnetTest
 {
@@ -25,7 +25,7 @@ namespace edcClientDotnetTest
         protected IClientConfiguration CreateClientConfiguration()
         {
             IClientConfiguration clientConfiguration = new ClientConfigurationImpl();
-            clientConfiguration.SetServerUrl(Constants.SERVER_URL);
+            clientConfiguration.ServerUrl = Constants.SERVER_URL;
             return clientConfiguration;
         }
 

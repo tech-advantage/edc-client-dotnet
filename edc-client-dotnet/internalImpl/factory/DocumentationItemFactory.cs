@@ -1,8 +1,8 @@
-﻿using edcClientDotnet.factory.model;
+﻿using edcClientDotnet.factory;
 using edcClientDotnet.internalImpl.model;
 using edcClientDotnet.model;
 
-namespace edcClientDotnet.factory.impl
+namespace edcClientDotnet.internalImpl.factory
 {
     public class DocumentationItemFactory : IDocumentationItemFactory
     {

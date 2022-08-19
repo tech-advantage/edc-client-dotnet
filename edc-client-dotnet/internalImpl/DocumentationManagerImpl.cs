@@ -55,7 +55,7 @@ namespace edcClientDotnet.internalImpl
 
             if (presentItems.Any())
             {
-                String exportId = presentItems.Where(s => s.GetPublicationId() != null).First() != null ? presentItems.Where(s => s.GetPublicationId() != null).First().ToString() : "";
+                String exportId = presentItems.Where(s => s.PublicationId != null).First() != null ? presentItems.Where(s => s.PublicationId != null).First().ToString() : "";
                 String defaultLang = defaultLangCodes.GetValueOrDefault(exportId);
                 defaultContext = _contexts.GetValueOrDefault(_keyUtil.GetKey(mainKey, subKey, defaultLang));
             }

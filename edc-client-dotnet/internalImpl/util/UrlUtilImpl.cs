@@ -12,14 +12,14 @@ namespace edcClientDotnet.internalImpl.util
             _clientConfiguration = clientConfiguration;
         }
 
-        public String GetHomeUrl() { return _clientConfiguration.GetWebHelpUrl() + "/home"; }
+        public String GetHomeUrl() { return _clientConfiguration.WebHelpUrl + "/home"; }
 
-        public String GetErrorUrl() { return _clientConfiguration.GetWebHelpUrl() + "/error"; }
+        public String GetErrorUrl() { return _clientConfiguration.WebHelpUrl + "/error"; }
 
         /// <exception cref="InvalidUrlException"></exception>
         public String GetContextUrl(String publicationId, String mainKey, String subKey, String languageCode, int articleIndex)
         {
-            return _clientConfiguration.GetWebHelpUrl() + "/context/" + publicationId + "/" + mainKey + "/" + subKey + "/" + languageCode + "/" + articleIndex;
+            return _clientConfiguration.WebHelpUrl + "/context/" + publicationId + "/" + mainKey + "/" + subKey + "/" + languageCode + "/" + articleIndex;
         }
 
         /// <exception cref="InvalidUrlException"></exception>
@@ -27,7 +27,7 @@ namespace edcClientDotnet.internalImpl.util
         {
             String language = String.IsNullOrEmpty(languageCode) ? "" : "/" + languageCode;
             String publicationId = String.IsNullOrEmpty(srcPublicationId) ? "" : srcPublicationId + "/";
-            return _clientConfiguration.GetWebHelpUrl() + "/doc/" + publicationId + id + language;
+            return _clientConfiguration.WebHelpUrl + "/doc/" + publicationId + id + language;
         }
 
 

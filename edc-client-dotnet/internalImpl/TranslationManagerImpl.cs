@@ -73,17 +73,17 @@ namespace edcClientDotnet.internalImpl
 
         private void AddToDefaultLanguages(String publicationId, IInformation information)
         {
-            if (information != null && _translationUtil.IsLanguageCodeValid(information.GetDefaultLanguage()))
+            if (information != null && _translationUtil.IsLanguageCodeValid(information.DefaultLanguage))
             {
-                _defaultPublicationLanguages.Add(publicationId, information.GetDefaultLanguage());
+                _defaultPublicationLanguages.Add(publicationId, information.DefaultLanguage);
             }
         }
 
         private void AddToLanguages(IInformation information)
         {
-            if (information != null && information.GetLanguages() != null)
+            if (information != null && information.Languages != null)
             {
-                foreach (String languageCode in information.GetLanguages())
+                foreach (String languageCode in information.Languages)
                 {
                     if(_translationUtil.IsLanguageCodeValid(languageCode))
                         _languageCodes.Add(languageCode);

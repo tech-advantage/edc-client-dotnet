@@ -10,12 +10,14 @@ namespace edcClientDotnet.internalImpl.model
         private String _defaultLanguage = ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE);
         private HashSet<String> _languages;
 
-        public String GetDefaultLanguage() { return _defaultLanguage; }
+        public String DefaultLanguage {
+            get => _defaultLanguage;
+            set => _defaultLanguage = value;
+        }
         
-        public HashSet<String> GetLanguages() { return _languages; }
-
-        public void SetDefaultLanguage(String defaultLanguage) { _defaultLanguage = defaultLanguage; }
-
-        public void SetLanguages(HashSet<String> languages) { _languages = languages; }
+        public HashSet<String> Languages {
+            get => _languages;
+            set => _languages = value;
+        }
     }
 }

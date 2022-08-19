@@ -2,8 +2,6 @@
 {
     public interface IObjectId
     {
-        long GetId();
-
-        void SetId(long id);
+        long ObjectId{ get; set; }
     }
 }

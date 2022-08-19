@@ -41,7 +41,7 @@ namespace edcClientDotnet.internalImpl
 
             if (context != null && (context.ArticleSize() > 0 || context.LinkSize() > 0))
             {
-                url = _urlUtil.GetContextUrl(context.GetPublicationId(), mainKey, subKey, languageCode, rank);
+                url = _urlUtil.GetContextUrl(context.PublicationId, mainKey, subKey, languageCode, rank);
             } else
             {
                 url = _urlUtil.GetHomeUrl();
@@ -93,21 +93,21 @@ namespace edcClientDotnet.internalImpl
         public void SetServerUrl(String serverUrl)
         {
             _logger.Debug("New server url: {}", serverUrl);
-            _clientConfiguration.SetServerUrl(serverUrl);
+            _clientConfiguration.ServerUrl = serverUrl;
         }
 
         /// <exception cref="InvalidUrlException"></exception>
         public void SetWebHelpContextUrl(String webHelpContextUrl)
         {
             _logger.Debug("New WebHelp Context: {}", webHelpContextUrl);
-            _clientConfiguration.SetWebHelpContext(webHelpContextUrl);
+            _clientConfiguration.WebHelpContext = webHelpContextUrl;
         }
 
         /// <exception cref="InvalidUrlException"></exception>
         public void SetDocumentationContextUrl(String documentationContextUrl)
         {
             _logger.Debug("New Documentation Context: {}", documentationContextUrl);
-            _clientConfiguration.SetDocumentationContext(documentationContextUrl);
+            _clientConfiguration.DocumentationContext = documentationContextUrl;
         }
 
         public void ForceReload()

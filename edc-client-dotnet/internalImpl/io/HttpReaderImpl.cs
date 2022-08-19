@@ -1,4 +1,4 @@
-﻿using edcClientDotnet.factory.model;
+﻿using edcClientDotnet.factory;
 using edcClientDotnet.internalImpl.http;
 using edcClientDotnet.io;
 using edcClientDotnet.model;
@@ -71,9 +71,9 @@ namespace edcClientDotnet.internalImpl.io
         /// <exception cref="InvalidUrlException"></exception>
         private IInformation ReadInfoFile(String publicationId)
         {
-            String infoFileUrl = _clientConfiguration.GetDocumentationUrl().EndsWith("/") 
-                ? _clientConfiguration.GetDocumentationUrl() + publicationId + "/" + InfoFile
-                : _clientConfiguration.GetDocumentationUrl() + "/" + publicationId + "/" + InfoFile;
+            String infoFileUrl = _clientConfiguration.DocumentationUrl.EndsWith("/") 
+                ? _clientConfiguration.DocumentationUrl + publicationId + "/" + InfoFile
+                : _clientConfiguration.DocumentationUrl + "/" + publicationId + "/" + InfoFile;
            
             HashSet<String> defaultLanguageCode = new HashSet<String>
             {
@@ -92,7 +92,7 @@ namespace edcClientDotnet.internalImpl.io
                 {
                     HashSet<String> languages = new HashSet<String>();
                     String defaultLangCode = jsonContent["defaultLanguage"]?.Value<String>() != null ? jsonContent["defaultLanguage"].Value<String>() : ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE);
-                    information.SetDefaultLanguage(defaultLangCode);
+                    information.DefaultLanguage = defaultLangCode;
                     _logger.Debug("Setting default Language from info.json : {}", defaultLangCode);
                     IList<JToken> presentLanguage = jsonContent["languages"].Children().ToList();
 
@@ -104,7 +104,7 @@ namespace edcClientDotnet.internalImpl.io
                         }
                     }
                     _logger.Debug("Setting languages from info.json : {}", languages);
-                    information.SetLanguages(languages);
+                    information.Languages = languages;
                 }
             }
             catch (Exception e)
@@ -114,10 +114,10 @@ namespace edcClientDotnet.internalImpl.io
             }
             finally
             {
-                if (String.IsNullOrEmpty(information.GetDefaultLanguage()))
-                    information.SetDefaultLanguage(ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE));
-                if (information.GetLanguages() == null || information.GetLanguages().Any())
-                    information.SetLanguages(defaultLanguageCode);
+                if (String.IsNullOrEmpty(information.DefaultLanguage))
+                    information.DefaultLanguage = ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE);
+                if (information.Languages == null || information.Languages.Any())
+                    information.Languages = defaultLanguageCode;
                 _logger.Debug("Created information from info.json : {}", information);
             }
 
@@ -129,9 +129,9 @@ namespace edcClientDotnet.internalImpl.io
         private HashSet<String> ReadPublicationIds()
         {
             HashSet<String> publicationIds = new HashSet<String>();
-            String multiDocUrl = _clientConfiguration.GetDocumentationUrl().EndsWith("/") 
-                ? _clientConfiguration.GetDocumentationUrl() + MultiDocFile 
-                : _clientConfiguration.GetDocumentationUrl() + "/" + MultiDocFile;
+            String multiDocUrl = _clientConfiguration.DocumentationUrl.EndsWith("/") 
+                ? _clientConfiguration.DocumentationUrl + MultiDocFile 
+                : _clientConfiguration.DocumentationUrl + "/" + MultiDocFile;
             _logger.Info("Multidoc url: {}", multiDocUrl);
             String? content = null;
             try
@@ -159,9 +159,9 @@ namespace edcClientDotnet.internalImpl.io
         /// <exception cref="InvalidUrlException"></exception>
         private Dictionary<String, IContextItem> ReadContext(String publicationId)
         {
-            String urlContext = _clientConfiguration.GetDocumentationUrl().EndsWith("/") 
-                ? _clientConfiguration.GetDocumentationUrl() + publicationId + "/" + ContextFile
-                : _clientConfiguration.GetDocumentationUrl() + "/" + publicationId + "/" + ContextFile;
+            String urlContext = _clientConfiguration.DocumentationUrl.EndsWith("/") 
+                ? _clientConfiguration.DocumentationUrl + publicationId + "/" + ContextFile
+                : _clientConfiguration.DocumentationUrl + "/" + publicationId + "/" + ContextFile;
             
             _logger.Info("Context url: {}", urlContext);
             Dictionary<String, IContextItem> contexts = new Dictionary<String, IContextItem>();
@@ -209,12 +209,12 @@ namespace edcClientDotnet.internalImpl.io
             _logger.Debug("Decode for language code: {}", languageCode);
             String description = jsonElement["description"].Value<String>();
             IContextItem contextItem = _contextItemFactory.Create();
-            contextItem.SetLabel(GetLabel(jsonElement.ToObject<JObject>()));
-            contextItem.SetLanguageCode(languageCode);
-            contextItem.SetUrl(getUrl(jsonElement.ToObject<JObject>()));
-            contextItem.SetPublicationId(publicationId);
-            contextItem.SetDescription(description);
-            contextItem.SetMainKey(mainKey);
+            contextItem.Label = GetLabel(jsonElement.ToObject<JObject>());
+            contextItem.LanguageCode = languageCode;
+            contextItem.Url = getUrl(jsonElement.ToObject<JObject>());
+            contextItem.PublicationId = publicationId;
+            contextItem.Description = description;
+            contextItem.MainKey = mainKey;
 
             CreateArticles(contextItem, jsonElement["articles"].Value<JArray>(), languageCode);
             CreateLinks(contextItem, jsonElement["links"].Value<JArray>(), languageCode);
@@ -227,12 +227,12 @@ namespace edcClientDotnet.internalImpl.io
             {
                 _logger.Debug("Article to decode: {}", articleJson);
                 IDocumentationItem article = _documentationItemFactory.Create();
-                article.SetDocumentationItemType(DocumentationItemType.ARTICLE);
-                article.SetLanguageCode(languageCode);
-                article.SetId(getId(articleJson));
-                article.SetLabel(GetLabel(articleJson));
-                article.SetUrl(getUrl(articleJson));
-                _logger.Debug("new article: {}, id {}, label {}, url {}, documentationItemType {}, articles = [{}], links = [{}]", article, article.GetId(), article.GetLabel(), article.GetUrl(), article.GetDocumentationItemType(), article.GetArticles(), article.GetLinks());
+                article.DocumentationItemType = DocumentationItemType.ARTICLE;
+                article.LanguageCode = languageCode;
+                article.ObjectId = getId(articleJson);
+                article.Label = GetLabel(articleJson);
+                article.Url = getUrl(articleJson);
+                _logger.Debug("new article: {}, id {}, label {}, url {}, documentationItemType {}, articles = [{}], links = [{}]", article, article.ObjectId, article.Label, article.Url, article.DocumentationItemType, article.GetArticles(), article.GetLinks());
                 documentationItem.AddArticle(article);
             }
         }
@@ -244,11 +244,11 @@ namespace edcClientDotnet.internalImpl.io
                 _logger.Debug("link to decode: {}", linkJson);
                 DocumentationItemType linksType = linkJson["type"]?.Value<String>() == "CHAPTER" ? DocumentationItemType.CHAPTER : linkJson["type"]?.Value<String>() == "DOCUMENT" ? DocumentationItemType.DOCUMENT : DocumentationItemType.UNKNOWN;
                 IDocumentationItem link = _documentationItemFactory.Create();
-                link.SetDocumentationItemType(linksType);
-                link.SetLanguageCode(languageCode);
-                link.SetId(getId(linkJson));
-                link.SetLabel(GetLabel(linkJson));
-                link.SetUrl(getUrl(linkJson));
+                link.DocumentationItemType = linksType;
+                link.LanguageCode = languageCode;
+                link.ObjectId = getId(linkJson);
+                link.Label = GetLabel(linkJson);
+                link.Url = getUrl(linkJson);
                 _logger.Debug("new link: {}", link);
                 documentationItem.AddLink(link);
             }
@@ -258,9 +258,9 @@ namespace edcClientDotnet.internalImpl.io
         private String GetLabelUrl(String languageCode)
         {
             String relativePath = PopoverI18NPath + languageCode + I18NFileExtension;
-            String i18nLabelUrl = _clientConfiguration.GetDocumentationUrl().EndsWith("/") 
-                ? _clientConfiguration.GetDocumentationUrl() + relativePath
-                : _clientConfiguration.GetDocumentationUrl() + "/" + relativePath;
+            String i18nLabelUrl = _clientConfiguration.DocumentationUrl.EndsWith("/") 
+                ? _clientConfiguration.DocumentationUrl + relativePath
+                : _clientConfiguration.DocumentationUrl + "/" + relativePath;
 
             _logger.Debug("Reading labels for lang {}, url {}, labelUrl {}", languageCode, relativePath, i18nLabelUrl);
             return i18nLabelUrl;

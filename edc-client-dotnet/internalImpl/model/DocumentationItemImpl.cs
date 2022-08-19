@@ -13,40 +13,48 @@ namespace edcClientDotnet.internalImpl.model
         private List<IDocumentationItem> _articles = new List<IDocumentationItem>();
         private List<IDocumentationItem> _links = new List<IDocumentationItem>();
 
-        public DocumentationItemImpl() {}
+        public DocumentationItemImpl() { }
 
         public DocumentationItemImpl(DocumentationItemType documentationItemType)
         {
             _documentationItemType = documentationItemType;
         }
 
-        public DocumentationItemType GetDocumentationItemType() { return _documentationItemType; }
-
-        public String GetLabel() { return _label; }
-
-        public String GetLanguageCode() { return _languageCode; }
-
-        public String GetPublicationId() { return _publicationId; }
-
-        public String GetUrl() { return _url; }
-
-        public void SetDocumentationItemType(DocumentationItemType documentationItemType) { _documentationItemType = documentationItemType; }
-
-        public void SetLabel(String label) { _label = label; }
-
-        public void SetLanguageCode(String languageCode) { _languageCode = languageCode; }
-
-        public void SetPublicationId(String publicationId) { _publicationId = publicationId; }
-
-        public void SetUrl(String? url)
+        public DocumentationItemType DocumentationItemType
         {
-            if (url is not null)
-                _url = url;
+            get => _documentationItemType;
+            set => _documentationItemType = value;
+        }
+
+        public String Label{
+            get => _label;
+            set => _label = value;
+        }
+
+        public String Url
+        {
+            get => _url;
+            set {
+                if (value is not null)
+                    _url = value;
+            }
+        }
+
+        public String PublicationId
+        {
+            get => _publicationId;
+            set => _publicationId = value;
+        }
+
+        public String LanguageCode
+        {
+            get => _languageCode;
+            set => _languageCode = value;
         }
 
         public void AddArticle(IDocumentationItem article)
         {
-            if (article.GetDocumentationItemType() == DocumentationItemType.ARTICLE)
+            if (article.DocumentationItemType == DocumentationItemType.ARTICLE)
             {
                 _articles.Add(article);
             }
@@ -61,7 +69,7 @@ namespace edcClientDotnet.internalImpl.model
 
         public void AddLink(IDocumentationItem link)
         {
-            if (link.GetDocumentationItemType() != DocumentationItemType.ARTICLE)
+            if (link.DocumentationItemType != DocumentationItemType.ARTICLE)
             {
                 _links.Add(link);
             }

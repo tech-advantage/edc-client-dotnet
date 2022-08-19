@@ -10,16 +10,20 @@ namespace edcClientDotnet.internalImpl.model
 
         public ContextItemImpl() : base(DocumentationItemType.CONTEXTUAL){}
         
-        public String GetDescription() { return _description; }
+        public String Description { 
+            get => _description;
+            set => _description = value;
+        }
 
-        public String GetMainKey() { return _mainKey; }
+        public String MainKey{ 
+            get => _mainKey;
+            set => _mainKey = value;
+        }
 
-        public String GetSubKey() { return _subKey; }
-
-        public void SetDescription(String description) { _description = description; }
-
-        public void SetMainKey(String mainKey) { _mainKey = mainKey; }
-
-        public void SetSubKey(String subKey) { _subKey = subKey; }
+        public String SubKey
+        {
+            get => _subKey;
+            set => _subKey = value;
+        }
     }
 }

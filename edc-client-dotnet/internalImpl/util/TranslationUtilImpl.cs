@@ -33,8 +33,8 @@ namespace edcClientDotnet.internalImpl.util
 
         private String GetDefaultLanguage(IInformation info)
         {
-            return (info != null && String.IsNullOrEmpty(info.GetDefaultLanguage())) ? 
-                ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE) : info.GetDefaultLanguage();
+            return (info != null && String.IsNullOrEmpty(info.DefaultLanguage)) ? 
+                ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE) : info.DefaultLanguage;
         }
     }
 }

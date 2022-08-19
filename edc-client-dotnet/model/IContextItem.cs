@@ -6,39 +6,24 @@ namespace edcClientDotnet.model
     {
 
         /// <summary>
-        ///     Return the description
+        /// <para>GET: Return the description.</para>
+        /// SET: Define the description
         /// </summary>
         /// <returns>the description</returns>
-        String GetDescription();
+        String Description { get; set; }
 
         /// <summary>
-        ///     Define the description
-        /// </summary>
-        /// <param name="description">the description to set</param>
-        void SetDescription(String description);
-
-        /// <summary>
-        ///     Return the main key pluginId, package, other, ...
+        /// <para>Return the main key pluginId, package, other, ...</para>
+        /// SET: Define the main key
         /// </summary>
         /// <returns>the main key</returns>
-        String GetMainKey();
+        String MainKey { get; set; }
 
         /// <summary>
-        ///     Define the main key
-        /// </summary>
-        /// <param name="mainKey">the main key to set</param>
-        void SetMainKey(String mainKey);
-
-        /// <summary>
-        ///     Return the secondary key (id of the brick)
+        /// <para>GET: Return the secondary key (id of the brick)</para>
+        /// SET: Define the secondary key
         /// </summary>
         /// <returns>the secondary key</returns>
-        String GetSubKey();
-
-        /// <summary>
-        ///     Define the secondary key
-        /// </summary>
-        /// <param name="subKey">the secondary key to set</param>
-        void SetSubKey(String subKey);
+        String SubKey { get; set; }
     }
 }

@@ -30,11 +30,11 @@ namespace edcClientDotnetTest.internalImpl.io
             Assert.AreEqual(39, contextItemDictionary.Count);
 
             IContextItem contextItem = contextItemDictionary.GetValueOrDefault(keyUtil.GetKey("fr.techad.edc", "help.center", "en"));
-            _languageCode = contextItem.GetLanguageCode();
-            Assert.AreEqual("All you need about edc", contextItem.GetDescription());
-            Assert.AreEqual("About edc", contextItem.GetLabel());
-            Assert.AreEqual("en", contextItem.GetLanguageCode());
-            Assert.AreEqual("edchelp/html/en/1/12523/index.html", contextItem.GetUrl());
+            _languageCode = contextItem.LanguageCode;
+            Assert.AreEqual("All you need about edc", contextItem.Description);
+            Assert.AreEqual("About edc", contextItem.Label);
+            Assert.AreEqual("en", contextItem.LanguageCode);
+            Assert.AreEqual("edchelp/html/en/1/12523/index.html", contextItem.Url);
             Assert.AreEqual(1, contextItem.ArticleSize());
             Assert.AreEqual(3, contextItem.LinkSize());
         }

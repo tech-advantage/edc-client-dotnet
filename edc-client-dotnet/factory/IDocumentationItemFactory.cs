@@ -1,6 +1,6 @@
 ﻿using edcClientDotnet.model;
 
-namespace edcClientDotnet.factory.model
+namespace edcClientDotnet.factory
 {
     public interface IDocumentationItemFactory
     {

@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet_test.internalImpl.model
+namespace edcClientDotnetTest.internalImpl.model
 {
     [TestClass]
     public class ClientConfigurationImplTest : CommonBase
@@ -16,54 +16,54 @@ namespace edc_client_dotnet_test.internalImpl.model
         [TestMethod]
         public void ShouldReturnTheDocumentationUrlAndAddSlash()
         {
-            _clientConfiguration.SetServerUrl("http://localhost");
-            _clientConfiguration.SetDocumentationContext("mydoc");
-            Assert.AreEqual("http://localhost/mydoc", _clientConfiguration.GetDocumentationUrl());
+            _clientConfiguration.ServerUrl = "http://localhost";
+            _clientConfiguration.DocumentationContext = "mydoc";
+            Assert.AreEqual("http://localhost/mydoc", _clientConfiguration.DocumentationUrl);
         }
 
         [TestMethod]
         public void ShouldReturnTheDocumentationUrl()
         {
-            _clientConfiguration.SetServerUrl("http://localhost/");
-            _clientConfiguration.SetDocumentationContext("mydoc");
-            Assert.AreEqual("http://localhost/mydoc", _clientConfiguration.GetDocumentationUrl());
+            _clientConfiguration.ServerUrl = "http://localhost/";
+            _clientConfiguration.DocumentationContext = "mydoc";
+            Assert.AreEqual("http://localhost/mydoc", _clientConfiguration.DocumentationUrl);
         }
 
         [TestMethod]
         public void ShouldReturnTheDocumentationUrlWithDefaultDocumentationContext()
         {
-            _clientConfiguration.SetServerUrl("http://localhost/");
-            Assert.AreEqual("http://localhost/doc", _clientConfiguration.GetDocumentationUrl());
+            _clientConfiguration.ServerUrl = "http://localhost/";
+            Assert.AreEqual("http://localhost/doc", _clientConfiguration.DocumentationUrl);
         }
 
         [TestMethod]
         public void ShouldReturnTheWebHelpUrlAndAddSlash()
         {
-            _clientConfiguration.SetServerUrl("http://localhost");
-            _clientConfiguration.SetWebHelpContext("my-help");
-            Assert.AreEqual("http://localhost/my-help", _clientConfiguration.GetWebHelpUrl());
+            _clientConfiguration.ServerUrl = "http://localhost";
+            _clientConfiguration.WebHelpContext = "my-help";
+            Assert.AreEqual("http://localhost/my-help", _clientConfiguration.WebHelpUrl);
         }
 
         [TestMethod]
         public void ShouldReturnTheWebHelpUrl()
         {
-            _clientConfiguration.SetServerUrl("http://localhost/");
-            _clientConfiguration.SetWebHelpContext("my-help");
-            Assert.AreEqual("http://localhost/my-help", _clientConfiguration.GetWebHelpUrl());
+            _clientConfiguration.ServerUrl = "http://localhost/";
+            _clientConfiguration.WebHelpContext = "my-help";
+            Assert.AreEqual("http://localhost/my-help", _clientConfiguration.WebHelpUrl);
         }
 
         [TestMethod]
         public void ShouldReturnTheWebHelpUrlWithDefaultWebHelpContext()
         {
-            _clientConfiguration.SetServerUrl("http://localhost/");
-            Assert.AreEqual("http://localhost/help", _clientConfiguration.GetWebHelpUrl());
+            _clientConfiguration.ServerUrl = "http://localhost/";
+            Assert.AreEqual("http://localhost/help", _clientConfiguration.WebHelpUrl);
         }
 
         [TestMethod]
         public void ShouldGetServerUrl()
         {
-            _clientConfiguration.SetServerUrl("http://localhost:8080");
-            Assert.AreEqual("http://localhost:8080", _clientConfiguration.GetServerUrl());
+            _clientConfiguration.ServerUrl = "http://localhost:8080";
+            Assert.AreEqual("http://localhost:8080", _clientConfiguration.ServerUrl);
         }
 
         [TestMethod]
@@ -71,20 +71,20 @@ namespace edc_client_dotnet_test.internalImpl.model
         "The server url is not defined")]
         public void ShouldThrowExceptionWhenTheServerUrlIsNull()
         {
-            _clientConfiguration.SetDocumentationContext("mydoc");
-            _clientConfiguration.GetDocumentationUrl();
+            _clientConfiguration.DocumentationContext = "mydoc";
+            Assert.Fail(_clientConfiguration.DocumentationUrl);
         }
 
         [TestMethod]
         public void ShouldGetWebHelpContext()
         {
-            Assert.AreEqual("help", _clientConfiguration.GetWebHelpContext());
+            Assert.AreEqual("help", _clientConfiguration.WebHelpContext);
         }
 
         [TestMethod]
         public void ShouldGetDocumentationContext()
         {
-            Assert.AreEqual("doc", _clientConfiguration.GetDocumentationContext());
+            Assert.AreEqual("doc", _clientConfiguration.DocumentationContext);
         }
 }
 }

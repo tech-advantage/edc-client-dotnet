@@ -1,40 +1,29 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
+using NLog;
 
-namespace edc_client_dotnet.internalImpl.model
+namespace edcClientDotnet.internalImpl.model
 {
     public class I18NContentImpl : II18NContent
     {
-        Dictionary<String, String> _translation = new Dictionary<String, String>();
-        private Dictionary<String, String> _i18nLabels = new Dictionary<String, String>();
-        private Dictionary<String, String> _i18nErrors = new Dictionary<String, String>();
-        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly Dictionary<String, String> _translation = new();
+        private readonly static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public String GetTranslation(String lang, String type, String key, String publicationId)
+        public string GetTranslation(string lang, string type, string key, string publicationId)
         {
-            _logger.Debug("Get translation lang: {}, type: {}, key: {}, publicationId: {} ", lang, type, key, publicationId);
-            return _translation.GetValueOrDefault(lang + "." + type + "." + key, "");
-        }       
+            _logger.Debug("Get the translated content for the lang: {}, type: {}, key: {}, value: {}", lang, type, key);
+            if(_translation.ContainsKey(lang + "." + type + "." + key)) {
+                return _translation[lang + "." + type + "." + key];
+            } else
+            {
+                return null;
+            }
+            
+        }
 
-        public void SetMessage(String lang, String type, String key, String value)
+        public void SetTranslation(string lang, string type, string key, string value)
         {
-            _logger.Debug("Set Message traduction lang: {}, type: {}, key: {}, value: {} ", lang, type, key, value);
+            _logger.Debug("Set the translated content for the lang: {}, type: {}, key: {}, value: {}", lang, type, key, value);
             _translation.Add(lang + "." + type + "." + key, value);
-        }
-
-        public void SetI18nLabel(Dictionary<String, String> i18nLabel)
-        {
-            foreach (var content in i18nLabel)
-            {
-                _i18nLabels.Add(content.Key, content.Value);
-            }
-        }
-
-        public void SetI18nError(Dictionary<String, String> i18nError)
-        {
-            foreach (var content in i18nError)
-            {
-                _i18nErrors.Add(content.Key, content.Value);
-            }
         }
     }
 }

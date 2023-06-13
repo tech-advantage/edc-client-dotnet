@@ -1,10 +1,11 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet
+namespace edcClientDotnet
 {
     /// DocumentationManager manage all content of the documentation.
     public interface IDocumentationManager
     {
+        
         /// <summary>
         ///     Get the context item according to the keys and the language or the default language if not found.
         ///     If the context was not found in the requested language, it will find the publication from the given keys
@@ -17,7 +18,7 @@ namespace edc_client_dotnet
         /// <returns>the context item or null</returns>
         /// <exception cref="IOException">if an error is occurred on reading</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        IContextItem GetContext(String mainKey, String subKey, String languageCode, IReadOnlyDictionary<String, String> defaultLanguages);
+        IContextItem? GetContext(String? mainKey, String? subKey, String? languageCode, IReadOnlyDictionary<String, String> defaultLanguages);
 
         /// <summary>
         ///     Force the reload of the documentation definition on the next call.

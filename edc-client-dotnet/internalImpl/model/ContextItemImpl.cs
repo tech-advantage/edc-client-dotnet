@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet.internalImpl.model
+namespace edcClientDotnet.internalImpl.model
 {
     public class ContextItemImpl : DocumentationItemImpl, IContextItem
     {
@@ -8,18 +8,24 @@ namespace edc_client_dotnet.internalImpl.model
         private String _mainKey;
         private String _subKey;
 
-        public ContextItemImpl() : base(DocumentationItemType.CONTEXTUAL){}
-        
-        public String GetDescription() { return _description; }
+        public ContextItemImpl() : base(DocumentationItemType.CONTEXTUAL) { }
 
-        public String GetMainKey() { return _mainKey; }
+        public String Description
+        {
+            get => _description;
+            set => _description = value;
+        }
 
-        public String GetSubKey() { return _subKey; }
+        public String MainKey
+        {
+            get => _mainKey;
+            set => _mainKey = value;
+        }
 
-        public void SetDescription(String description) { _description = description; }
-
-        public void SetMainKey(String mainKey) { _mainKey = mainKey; }
-
-        public void SetSubKey(String subKey) { _subKey = subKey; }
+        public String SubKey
+        {
+            get => _subKey;
+            set => _subKey = value;
+        }
     }
 }

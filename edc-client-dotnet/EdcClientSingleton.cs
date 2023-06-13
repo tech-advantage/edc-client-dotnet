@@ -1,15 +1,17 @@
-﻿using edc_client_dotnet.Injection;
-using edc_client_dotnet.model;
+﻿using edcClientDotnet.Injection;
+using edcClientDotnet.model;
 using Microsoft.Extensions.DependencyInjection;
+using NLog;
 
-namespace edc_client_dotnet
+namespace edcClientDotnet
 {
     public class EdcClientSingleton : IEdcClient
     {
         private static EdcClientSingleton? _instance = null;
         private IEdcClient _edcClient;
+        private readonly static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        private EdcClientSingleton() : base() {}
+        private EdcClientSingleton() : base() { }
 
         public static EdcClientSingleton GetInstance()
         {
@@ -49,7 +51,7 @@ namespace edc_client_dotnet
 
         /// <exception cref="IOException"></exception>
         /// <exception cref="InvalidUrlException"></exception>
-        public IContextItem GetContextItem(String mainKey, String subKey, String languageCode)
+        public IContextItem GetContextItem(String? mainKey, String? subKey, String? languageCode)
         {
             return _edcClient.GetContextItem(mainKey, subKey, languageCode);
         }
@@ -58,7 +60,27 @@ namespace edc_client_dotnet
         /// <exception cref="InvalidUrlException"></exception>
         public String GetLabel(String labelKey, String languageCode, String publicationId)
         {
-            return _edcClient.GetLabel(labelKey, languageCode, publicationId);
+            try
+            {
+                return _edcClient.GetLabel(labelKey, languageCode, publicationId);
+            }
+            catch (IOException ex)
+            {
+                // Handle IOException here
+                // You can log the exception, display an error message, or take appropriate action
+                // Example:
+                _logger.Error("An IOException occurred: " + ex.Message);
+            }
+            catch (InvalidUrlException ex)
+            {
+                // Handle InvalidUrlException here
+                // Example:
+                _logger.Error("An InvalidUrlException occurred: " + ex.Message);
+            }
+
+            // Return a default value or handle the exceptional case
+            return string.Empty;
+
         }
 
         /// <exception cref="IOException"></exception>
@@ -68,7 +90,8 @@ namespace edc_client_dotnet
             return _edcClient.GetError(errorKey, languageCode, publicationId);
         }
 
-        public void SetServerUrl(String serverUrl){
+        public void SetServerUrl(String serverUrl)
+        {
             _edcClient.SetServerUrl(serverUrl);
         }
 

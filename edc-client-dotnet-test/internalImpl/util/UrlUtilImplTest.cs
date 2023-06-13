@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.utils;
+﻿using edcClientDotnet.utils;
 
-namespace edc_client_dotnet_test.internalImpl.util
+namespace edcClientDotnetTest.internalImpl.util
 {
     [TestClass]
     public class UrlUtilImplTest : CommonBase

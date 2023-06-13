@@ -1,30 +1,28 @@
-﻿using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.model;
+using edcClientDotnet.utils;
 using System.Collections;
 
-namespace edc_client_dotnet.internalImpl
+namespace edcClientDotnet.internalImpl
 {
     public class TranslationConstants : IEnumerable<String>
     {
         public static Dictionary<String, String> GetDefaultLabels()
         {
-           Dictionary<String, String> DEFAULT_LABELS = new Dictionary<String, String>();
-
-            DEFAULT_LABELS.Add(ParseEnumDescription.GetDescription(I18NTranslation.ARTICLES_KEY), "Need more...");
-            DEFAULT_LABELS.Add(ParseEnumDescription.GetDescription(I18NTranslation.LINKS_KEY), "Related topics");
-            DEFAULT_LABELS.Add(ParseEnumDescription.GetDescription(I18NTranslation.COMING_SOON_KEY), "Contextual help is coming soon.");
-            DEFAULT_LABELS.Add(ParseEnumDescription.GetDescription(I18NTranslation.ERROR_TITLE_KEY), "Error");
-            
-            return DEFAULT_LABELS;
+            return new Dictionary<string, string>
+            {
+                [ParseEnumDescription.GetDescription(I18NTranslation.ARTICLES_KEY)] = "Need more...",
+                [ParseEnumDescription.GetDescription(I18NTranslation.LINKS_KEY)] = "Related topics",
+                [ParseEnumDescription.GetDescription(I18NTranslation.COMING_SOON_KEY)] = "Contextual help is coming soon.",
+                [ParseEnumDescription.GetDescription(I18NTranslation.ERROR_TITLE_KEY)] = "Error",
+            };
         }
 
-        public static Dictionary<String, String> GetDefaultErrors()
+        public static Dictionary<string, string> GetDefaultErrors()
         {
-            Dictionary<String, String> DEFAULT_ERRORS = new Dictionary<String, String>();
-
-            DEFAULT_ERRORS.Add(ParseEnumDescription.GetDescription(I18NTranslation.ERRORS_KEY), "An error occurred when fetching data ! \nCheck the brick keys provided to the EdcHelp component.");
-
-            return DEFAULT_ERRORS;
+            return new Dictionary<string, string>
+            {
+                [ParseEnumDescription.GetDescription(I18NTranslation.ERRORS_KEY)] = "An error occurred when fetching data!\nCheck the brick keys provided to the EdcHelp component."
+            };
         }
 
         public static readonly IEnumerable<String> LANGUAGES_CODES = new HashSet<String>

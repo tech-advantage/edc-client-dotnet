@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet.io
+namespace edcClientDotnet.io
 {
     public interface IEdcReader
     {
@@ -11,7 +11,7 @@ namespace edc_client_dotnet.io
         /// <returns>a dictionary which associate the contextual key with the content item.</returns>
         /// <exception cref="IOException">if an IO error occurred during the read</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        Dictionary<String, IContextItem> GetContext();
+        Dictionary<String, IContextItem> ReadContext();
 
         /// <summary>
         ///     Read the export information, for every publication, from the info.json files
@@ -20,7 +20,7 @@ namespace edc_client_dotnet.io
         /// <returns>a dictionary containing the keys and label translations associated</returns>
         /// <exception cref="IOException">if an IO error occurred during the read</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        Dictionary<String, IInformation> ReadInfo();
+        Dictionary<String, IInformation> GetInformations();
 
         /// <summary>
         ///     Read the translated popover label for the given language code

@@ -1,7 +1,7 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 using System.Collections.ObjectModel;
 
-namespace edc_client_dotnet
+namespace edcClientDotnet
 {
     public interface ITranslationManager
     {
@@ -50,6 +50,6 @@ namespace edc_client_dotnet
         ///     Return a Dictionary with the default language for each publication
         /// </summary>
         /// <returns>a Dictionary containing the publication id as key, default language code as value</returns>
-        ReadOnlyDictionary<String, String> GetDefaultPublicationLanguages();
+        Dictionary<String, String> GetDefaultPublicationLanguages();
     }
 }

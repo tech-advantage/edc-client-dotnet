@@ -1,4 +1,4 @@
-﻿namespace edc_client_dotnet.model
+﻿namespace edcClientDotnet.model
 {
     public class InvalidUrlException : Exception
     {

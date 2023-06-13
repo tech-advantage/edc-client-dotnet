@@ -1,7 +1,7 @@
-﻿namespace edc_client_dotnet.internalImpl.http
+﻿namespace edcClientDotnet.internalImpl.http
 {
     public class Error4xxException : Exception
     {
-        public Error4xxException(String message) : base(message) {}
+        public Error4xxException(String message) : base(message) { }
     }
 }

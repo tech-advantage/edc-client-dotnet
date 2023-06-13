@@ -1,7 +1,6 @@
-﻿
-using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet
+namespace edcClientDotnet
 {
     // EdcClient is the utility class to get all information about documentation.
     public interface IEdcClient
@@ -56,7 +55,7 @@ namespace edc_client_dotnet
         /// <returns>the context item</returns>
         /// <exception cref="IOException">if an error is occurred on reading</exception>
         /// <exception cref="InvalidUrlException">if the url is malformed</exception>
-        IContextItem GetContextItem(String mainKey, String subKey, String languageCode);
+        IContextItem? GetContextItem(String? mainKey, String? subKey, String? languageCode);
 
         /// <summary>
         ///     Return the label translation for the given key

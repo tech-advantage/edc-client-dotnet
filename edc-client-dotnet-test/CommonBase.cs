@@ -1,18 +1,18 @@
-﻿using edc_client_dotnet;
-using edc_client_dotnet.factory;
-using edc_client_dotnet.Injection;
-using edc_client_dotnet.Injection.factory;
-using edc_client_dotnet.internalImpl;
-using edc_client_dotnet.internalImpl.http;
-using edc_client_dotnet.internalImpl.io;
-using edc_client_dotnet.internalImpl.model;
-using edc_client_dotnet.internalImpl.util;
-using edc_client_dotnet.io;
-using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
-using Microsoft.Extensions.DependencyInjection;
+﻿using edcClientDotnet;
+using edcClientDotnet.Injection;
+using edcClientDotnet.internalImpl;
+using edcClientDotnet.internalImpl.http;
+using edcClientDotnet.internalImpl.io;
+using edcClientDotnet.internalImpl.model;
+using edcClientDotnet.internalImpl.util;
+using edcClientDotnet.io;
+using edcClientDotnet.model;
+using edcClientDotnet.utils;
+using edcClientDotnetTest.internalImpl;
+using edcClientDotnet.internalImpl.factory;
+using edcClientDotnet.factory;
 
-namespace edc_client_dotnet_test
+namespace edcClientDotnetTest
 {
     public abstract class CommonBase
     {
@@ -25,7 +25,7 @@ namespace edc_client_dotnet_test
         protected IClientConfiguration CreateClientConfiguration()
         {
             IClientConfiguration clientConfiguration = new ClientConfigurationImpl();
-            clientConfiguration.SetServerUrl(Constants.SERVER_URL);
+            clientConfiguration.ServerUrl = Constants.SERVER_URL;
             return clientConfiguration;
         }
 
@@ -41,10 +41,10 @@ namespace edc_client_dotnet_test
             IClientConfiguration clientConfiguration = CreateClientConfiguration();
             IKeyUtil keyUtil = CreateKeyBuilder();
             Startup.ConfigureServices();
-            ContextItemFactory? contextItemFactory = Startup.serviceProvider.GetService<ContextItemFactory>();
-            DocumentationItemFactory? documentationItemFactory = Startup.serviceProvider.GetService<DocumentationItemFactory>();
-            InformationFactory? informationFactory = Startup.serviceProvider.GetService<InformationFactory>();
-            I18NFactory? i18nFactory = Startup.serviceProvider.GetService<I18NFactory>();
+            ContextItemFactory? contextItemFactory = new ContextItemFactory();
+            DocumentationItemFactory? documentationItemFactory = new DocumentationItemFactory();
+            IInformationFactory? informationFactory = new InformationFactory();
+            I18NFactory? i18nFactory = new I18NFactory();
             _edcReader = new HttpReaderImpl(httpClient, clientConfiguration, keyUtil, contextItemFactory, documentationItemFactory, informationFactory, i18nFactory);
 
             return _edcReader;
@@ -59,6 +59,8 @@ namespace edc_client_dotnet_test
         protected IInformationManager CreateInformationManager(){ return new InformationManagerImpl(CreateEdcReader()); }
 
         protected ITranslationManager CreateTranslationManager() { return new TranslationManagerImpl(CreateEdcReader(), CreateTranslationUtil()); }
+
+        protected I18NContentImpl CreateIi8nContent() { return new I18NContentImpl(); }
 
         protected IEdcClient CreateEdcClient() { return new EdcClientImpl(CreateClientConfiguration(), CreateDocumentationManager(), CreateUrlBuilder(), CreateTranslationManager(), CreateInformationManager()); }
     }

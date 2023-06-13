@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.utils;
+﻿using edcClientDotnet.utils;
 
-namespace edc_client_dotnet.internalImpl.util
+namespace edcClientDotnet.internalImpl.util
 {
     public class KeyUtilImpl : IKeyUtil
     {
@@ -11,7 +11,7 @@ namespace edc_client_dotnet.internalImpl.util
 
         public bool ContainsKey(String fullKey, String mainKey, String subKey)
         {
-            return String.IsNullOrEmpty(fullKey) && String.IsNullOrEmpty(mainKey) && String.IsNullOrEmpty(subKey) && fullKey.Contains(mainKey + "." + subKey);
+            return !String.IsNullOrEmpty(fullKey) && !String.IsNullOrEmpty(mainKey) && !String.IsNullOrEmpty(subKey) && fullKey.Contains(mainKey + "." + subKey);
         }
 
     }

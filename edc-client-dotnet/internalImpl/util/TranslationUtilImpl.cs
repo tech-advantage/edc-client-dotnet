@@ -1,8 +1,8 @@
-﻿using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
-using static edc_client_dotnet.model.I18NTranslation;
+﻿using edcClientDotnet.model;
+using edcClientDotnet.utils;
+using static edcClientDotnet.model.I18NTranslation;
 
-namespace edc_client_dotnet.internalImpl.util
+namespace edcClientDotnet.internalImpl.util
 {
     public class TranslationUtilImpl : ITranslationUtil
     {
@@ -33,8 +33,8 @@ namespace edc_client_dotnet.internalImpl.util
 
         private String GetDefaultLanguage(IInformation info)
         {
-            return (info != null && String.IsNullOrEmpty(info.GetDefaultLanguage())) ? 
-                ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE) : info.GetDefaultLanguage();
+            return (info != null && String.IsNullOrEmpty(info.DefaultLanguage)) ? 
+                ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE) : info.DefaultLanguage;
         }
     }
 }

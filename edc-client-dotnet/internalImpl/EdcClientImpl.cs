@@ -1,7 +1,8 @@
-﻿using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
+﻿using edcClientDotnet.model;
+using edcClientDotnet.utils;
+using NLog;
 
-namespace edc_client_dotnet.internalImpl
+namespace edcClientDotnet.internalImpl
 {
     public class EdcClientImpl : IEdcClient
     {
@@ -10,7 +11,7 @@ namespace edc_client_dotnet.internalImpl
         private readonly ITranslationManager _translationManager;
         private readonly IInformationManager _informationManager;
         private readonly IUrlUtil _urlUtil;
-        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public EdcClientImpl(IClientConfiguration clientConfiguration, IDocumentationManager documentationManager,
             IUrlUtil urlUtil, ITranslationManager translationManager, IInformationManager informationManager)
@@ -36,11 +37,12 @@ namespace edc_client_dotnet.internalImpl
         {
             _logger.Debug("Get WebHelp Context item with mainKey: {}, subKey: {}, languageCode:{}", mainKey, subKey, languageCode);
             String url;
+            
             IContextItem context = _documentationManager.GetContext(mainKey, subKey, languageCode, _translationManager.GetDefaultPublicationLanguages());
 
             if (context != null && (context.ArticleSize() > 0 || context.LinkSize() > 0))
             {
-                url = _urlUtil.GetContextUrl(context.GetPublicationId(), mainKey, subKey, languageCode, rank);
+                url = _urlUtil.GetContextUrl(context.PublicationId, mainKey, subKey, languageCode, rank);
             } else
             {
                 url = _urlUtil.GetHomeUrl();
@@ -53,19 +55,21 @@ namespace edc_client_dotnet.internalImpl
         public String GetDocumentationWebHelpUrl(long id, String languageCode, String srcPublicationId)
         {
             String url;
-            if(id != null)
+  
+            if (id != null)
             {
                 url = _urlUtil.GetDocumentationUrl(id, languageCode, srcPublicationId);
             } else
             {
                 url = _urlUtil.GetHomeUrl();
             }
+     
             return url;
         }
 
         /// <exception cref="IOException"></exception>
         /// <exception cref="InvalidUrlException"></exception>
-        public IContextItem GetContextItem(String mainKey, String subKey, String languageCode)
+        public IContextItem GetContextItem(String? mainKey, String? subKey, String? languageCode)
         {
             _logger.Debug("Get WebHelp Context item with mainKey: {}, subKey: {}, languageCode:{}", mainKey, subKey, languageCode);
             LoadContext();
@@ -87,26 +91,27 @@ namespace edc_client_dotnet.internalImpl
         {
             _logger.Debug("Getting error for key {}, language code {} and publication id {}", errorKey, languageCode, publicationId);
             LoadContext();
+
             return _translationManager.GetError(errorKey, languageCode, publicationId);
         }
         public void SetServerUrl(String serverUrl)
         {
             _logger.Debug("New server url: {}", serverUrl);
-            _clientConfiguration.SetServerUrl(serverUrl);
+            _clientConfiguration.ServerUrl = serverUrl;
         }
 
         /// <exception cref="InvalidUrlException"></exception>
         public void SetWebHelpContextUrl(String webHelpContextUrl)
         {
             _logger.Debug("New WebHelp Context: {}", webHelpContextUrl);
-            _clientConfiguration.SetWebHelpContext(webHelpContextUrl);
+            _clientConfiguration.WebHelpContext = webHelpContextUrl;
         }
 
         /// <exception cref="InvalidUrlException"></exception>
         public void SetDocumentationContextUrl(String documentationContextUrl)
         {
             _logger.Debug("New Documentation Context: {}", documentationContextUrl);
-            _clientConfiguration.SetDocumentationContext(documentationContextUrl);
+            _clientConfiguration.DocumentationContext = documentationContextUrl;
         }
 
         public void ForceReload()

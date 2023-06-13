@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace edc_client_dotnet.model
+namespace edcClientDotnet.model
 {
     public enum I18NTranslation
     {

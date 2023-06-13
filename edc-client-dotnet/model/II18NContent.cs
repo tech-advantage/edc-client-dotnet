@@ -1,4 +1,4 @@
-﻿namespace edc_client_dotnet.model
+﻿namespace edcClientDotnet.model
 {
     public interface II18NContent
     {
@@ -19,6 +19,6 @@
         /// <param name="type"></param>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        void SetMessage(String lang, String type, String key, String value);
+        void SetTranslation(String lang, String type, String key, String value);
     }
 }

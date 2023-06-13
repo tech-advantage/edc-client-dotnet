@@ -1,88 +1,56 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace edc_client_dotnet.model
+namespace edcClientDotnet.model
 {
     /// This class define a documentation component.
     public interface IDocumentationItem : IObjectId
     {
-
         /// <summary>
-        ///     Return the label
+        ///     <para>GET: Return the label</para>
+        ///     SET: Define the label
         /// </summary>
         /// <returns>the label</returns>
-        String GetLabel();
-        
-        /// <summary>
-        ///     Define the label
-        /// </summary>
-        /// <param name="label">the label to set</param>
-        void SetLabel(String label);
+        String Label { get; set; }
 
         /// <summary>
-        ///     Return the url defined the configuration file (read from a documentation definition).
+        ///     <para>GET: Return the url defined the configuration file (read from a documentation definition).
+        ///     It's the real path on the documentation server</para>
+        ///     SET: Define the label
         ///     It's the real path on the documentation server.
         /// </summary>
         /// <returns>the url</returns>
-        String GetUrl();
+        String Url { get; set; }
 
         /// <summary>
-        ///     Define the url.
-        ///     It's the real path on the documentation server.
-        /// </summary>
-        /// <param name="url">the url to set</param>
-        void SetUrl(String? url);
-
-        /// <summary>
-        ///     Get the publication id.
+        ///     <para>GET: The publication id.</para>
+        ///     SET: Define the publication id
         /// </summary>
         /// <returns>the publicationId</returns>
-        String GetPublicationId();
+        String PublicationId { get; set; }
 
         /// <summary>
-        ///     Define the publication id
-        /// </summary>
-        /// <param name="publicationId">the identifier of the publication</param>
-        void SetPublicationId(String publicationId);
-
-        /// <summary>
-        ///     Return the language code of this documentation.
-        ///     <p>
-        ///     The code is defined by 2 digits in lowercase.
+        ///     <para>GET: Return the language code of this documentation. The code is defined by 2 digits in lowercase.</para>
+        ///     SET: Define the language code of this documentation. The code is defined by 2 digits in lowercase.
         /// </summary>
         /// <returns>the language code</returns>
-        String GetLanguageCode();
+        String LanguageCode { get; set; }
 
         /// <summary>
-        ///     Define the language code of this documentation.
-        ///     <p>
-        ///     The code is defined by 2 digits in lowercase.
-        /// </summary>
-        /// <param name="languageCode">the language code to set</param>
-        void SetLanguageCode(String languageCode);
-
-        /// <summary>
-        ///     Return the documentation type.
+        ///     <para>GET: Return the documentation type.</para>
+        ///     SET: Define the documentation type
         /// </summary>
         /// <returns>the documentation type</returns>
-        DocumentationItemType GetDocumentationItemType();
- 
-        /// <summary>
-        ///     Define the documentation type
-        /// </summary>
-        /// <param name="documentationItemType">the documentation type to set</param>
-        void SetDocumentationItemType(DocumentationItemType documentationItemType);
+        DocumentationItemType DocumentationItemType { get; set; }
 
         /// <summary>
-        ///     Add a documentation item as article.
-        ///     <p>
+        ///     <para>Add a documentation item as article.</para>
         ///     Only {@link DocumentationItemType#ARTICLE} is accepted.
         /// </summary>
         /// <param name="article">the article to add</param>
         void AddArticle(IDocumentationItem article);
 
         /// <summary>
-        ///     Return the list of articles.
-        ///     <p>
+        ///     <para>Return the list of articles.</para>
         ///     This list is unmodifiable.
         /// </summary>
         /// <returns>the list of articles</returns>
@@ -95,16 +63,14 @@ namespace edc_client_dotnet.model
         int ArticleSize();
 
         /// <summary>
-        ///     Add a documentation item as link.
-        ///     <p>
+        ///     <para>Add a documentation item as link.</para>
         ///     All is accepted excepted {@link DocumentationItemType}.
         /// </summary>
         /// <param name="link">the link to add</param>
         void AddLink(IDocumentationItem link);
 
         /// <summary>
-        ///     Return the list of links.
-        ///     <p>
+        ///     <para>Return the list of links.</para>
         ///     This list is unmodifiable.
         /// </summary>
         /// <returns>the list of links</returns>

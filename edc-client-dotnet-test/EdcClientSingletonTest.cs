@@ -1,8 +1,9 @@
-using edc_client_dotnet;
-using edc_client_dotnet.model;
+using edcClientDotnet;
+using edcClientDotnet.model;
 using Newtonsoft.Json;
+using edcClientDotnetTest.internalImpl;
 
-namespace edc_client_dotnet_test;
+namespace edcClientDotnetTest;
 
 [TestClass]
 public class EdcClientSingletonTest
@@ -11,8 +12,9 @@ public class EdcClientSingletonTest
 
     [TestInitialize]
     public void Setup()
+        
     {
-        EdcClientSingleton.GetInstance().SetServerUrl("https://demo.easydoccontents.com");
+        EdcClientSingleton.GetInstance().SetServerUrl(Constants.SERVER_URL);
         try
         {
             EdcClientSingleton.GetInstance().SetWebHelpContextUrl("help");
@@ -27,8 +29,6 @@ public class EdcClientSingletonTest
     [TestMethod]
     public void ShouldGetUrl()
     {
-        EdcClientSingleton.GetInstance().GetContextWebHelpUrl("fr.techad.edc", "help.center", "en");
-        EdcClientSingleton.GetInstance().ForceReload();
         String url = EdcClientSingleton.GetInstance().GetContextWebHelpUrl("fr.techad.edc", "help.center", "en");
         Assert.AreEqual("https://demo.easydoccontents.com/help/context/edchelp/fr.techad.edc/help.center/en/0", url);
     }
@@ -83,7 +83,7 @@ public class EdcClientSingletonTest
     }
 
     [TestMethod]
-    [ExpectedException(typeof(JsonReaderException))]
+    [ExpectedException(typeof(IOException))]
     public void ShouldThrowsExceptionOnUnknownDocumentationContext()
     {
         EdcClientSingleton.GetInstance().SetDocumentationContextUrl("my-doc");

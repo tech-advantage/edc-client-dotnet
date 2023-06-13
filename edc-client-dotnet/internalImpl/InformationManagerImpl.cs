@@ -1,26 +1,26 @@
-﻿using edc_client_dotnet.io;
-using edc_client_dotnet.model;
+﻿using edcClientDotnet.io;
+using edcClientDotnet.model;
+using NLog;
 using System.Collections.ObjectModel;
 
-namespace edc_client_dotnet.internalImpl
+namespace edcClientDotnet.internalImpl
 {
     public class InformationManagerImpl : IInformationManager
     {
         private readonly IEdcReader _reader;
-        private readonly Dictionary<String, IInformation> _information = new Dictionary<String, IInformation>();
-        private static NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly Dictionary<String, IInformation> _information = new();
+        private readonly static Logger _logger = LogManager.GetCurrentClassLogger();
 
         public InformationManagerImpl(IEdcReader reader){ _reader = reader; }
 
         public void LoadInformation()
         {
-            if (_information.Any())
+            foreach (KeyValuePair<String, IInformation> entry in _reader.GetInformations())
             {
-                foreach(KeyValuePair<String, IInformation> entry in _reader.ReadInfo())
+                if (!_information.ContainsKey(entry.Key))
                 {
                     _information.Add(entry.Key, entry.Value);
-                }
-                _logger.Debug("Information loaded {}", _information);
+                } 
             }
         }
 
@@ -30,9 +30,10 @@ namespace edc_client_dotnet.internalImpl
             _logger.Debug("Information cleared, will be ");
         }
 
-        public ReadOnlyDictionary<String, IInformation> GetPublicationInformation()
+        public ReadOnlyDictionary<string, IInformation> GetPublicationInformation()
         {
-            return new ReadOnlyDictionary<String, IInformation>(_information);
+            return new ReadOnlyDictionary<string, IInformation>(_information);
         }
+
     }
 }

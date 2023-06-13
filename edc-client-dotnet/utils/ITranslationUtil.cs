@@ -1,6 +1,6 @@
-﻿using edc_client_dotnet.model;
+﻿using edcClientDotnet.model;
 
-namespace edc_client_dotnet.utils
+namespace edcClientDotnet.utils
 {
     public interface ITranslationUtil
     {

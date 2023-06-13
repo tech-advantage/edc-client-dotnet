@@ -1,8 +1,8 @@
-﻿using edc_client_dotnet.model;
-using edc_client_dotnet.utils;
-using static edc_client_dotnet.model.I18NTranslation;
+﻿using edcClientDotnet.model;
+using edcClientDotnet.utils;
+using static edcClientDotnet.model.I18NTranslation;
 
-namespace edc_client_dotnet.internalImpl.model
+namespace edcClientDotnet.internalImpl.model
 {
 
     public class InformationImpl : IInformation
@@ -10,12 +10,16 @@ namespace edc_client_dotnet.internalImpl.model
         private String _defaultLanguage = ParseEnumDescription.GetDescription(DEFAULT_LANGUAGE_CODE);
         private HashSet<String> _languages;
 
-        public String GetDefaultLanguage() { return _defaultLanguage; }
-        
-        public HashSet<String> GetLanguages() { return _languages; }
+        public String DefaultLanguage
+        {
+            get => _defaultLanguage;
+            set => _defaultLanguage = value;
+        }
 
-        public void SetDefaultLanguage(String defaultLanguage) { _defaultLanguage = defaultLanguage; }
-
-        public void SetLanguages(HashSet<String> languages) { _languages = languages; }
+        public HashSet<String> Languages
+        {
+            get => _languages;
+            set => _languages = value;
+        }
     }
 }

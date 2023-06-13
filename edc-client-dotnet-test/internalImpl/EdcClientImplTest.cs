@@ -1,7 +1,7 @@
-﻿using edc_client_dotnet;
-using edc_client_dotnet.model;
+﻿using edcClientDotnet;
+using edcClientDotnet.model;
 
-namespace edc_client_dotnet_test.internalImpl
+namespace edcClientDotnetTest.internalImpl
 {
     [TestClass]
     public class EdcClientImplTest : CommonBase
@@ -29,9 +29,24 @@ namespace edc_client_dotnet_test.internalImpl
         }
 
         [TestMethod]
+        public void ShouldGetLabel()
+        {
+            String label = _edcClient.GetLabel("articles", "en", "webmailmain");
+            Assert.AreEqual("Need more...", label);
+        }
+
+        [TestMethod]
+        public void ShouldGetError()
+        {
+            String error = _edcClient.GetError("failedData", "en", "webmailmain");
+            Assert.AreEqual("Une erreur est survenue lors de la récupération des données !\nVérifiez les clés de la brique fournies au composant EdcHelp.", error);
+        }
+
+        [TestMethod]
         public void ShouldGetContext()
         {
             IContextItem contextItem = _edcClient.GetContextItem("fr.techad.edc", "help.center", "en");
+            _edcClient.LoadContext();
             Assert.IsNotNull(contextItem);
             Assert.AreEqual(1, contextItem.ArticleSize());
             Assert.AreEqual(3, contextItem.LinkSize());

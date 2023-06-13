@@ -1,4 +1,4 @@
-﻿using edcClientDotnet.model;
+using edcClientDotnet.model;
 using edcClientDotnet.utils;
 using static edcClientDotnet.model.I18NTranslation;
 

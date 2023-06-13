@@ -1,4 +1,4 @@
-﻿using edcClientDotnet.io;
+using edcClientDotnet.io;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;
 using NLog;
@@ -46,7 +46,7 @@ namespace edcClientDotnet.internalImpl
             if (_contexts == null)
             {
                 _logger.Debug("No contexts defined, read it");
-                _contexts = _reader.ReadContext();
+                _contexts = _reader.GetContext();
             }
         }
 

@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 
 namespace edcClientDotnet.model
 {
@@ -57,7 +57,7 @@ namespace edcClientDotnet.model
         ReadOnlyCollection<IDocumentationItem> GetArticles();
 
         /// <summary>
-        ///     Return the number of articles contained by this DocumentationItem
+        /// Return the number of articles contained by this DocumentationItem
         /// </summary>
         /// <returns>the number of articles</returns>
         int ArticleSize();
@@ -77,7 +77,7 @@ namespace edcClientDotnet.model
         ReadOnlyCollection<IDocumentationItem> GetLinks();
 
         /// <summary>
-        ///     Return the number of links contained by this DocumentationItem
+        /// Return the number of links contained by this DocumentationItem
         /// </summary>
         /// <returns>the number of links</returns>
         int LinkSize();

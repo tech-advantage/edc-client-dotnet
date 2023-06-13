@@ -1,4 +1,4 @@
-﻿using edcClientDotnet.factory;
+using edcClientDotnet.factory;
 using edcClientDotnet.internalImpl.http;
 using edcClientDotnet.io;
 using edcClientDotnet.model;

@@ -1,4 +1,4 @@
-﻿using edcClientDotnet.io;
+using edcClientDotnet.io;
 using edcClientDotnet.model;
 using NLog;
 using System.Collections.ObjectModel;

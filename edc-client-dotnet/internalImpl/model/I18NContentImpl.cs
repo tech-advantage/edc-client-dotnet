@@ -1,4 +1,4 @@
-﻿using edcClientDotnet.model;
+using edcClientDotnet.model;
 using NLog;
 
 namespace edcClientDotnet.internalImpl.model

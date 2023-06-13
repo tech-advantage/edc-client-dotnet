@@ -1,4 +1,4 @@
-﻿namespace edcClientDotnet.model
+namespace edcClientDotnet.model
 {
     public enum DocumentationItemType
     {

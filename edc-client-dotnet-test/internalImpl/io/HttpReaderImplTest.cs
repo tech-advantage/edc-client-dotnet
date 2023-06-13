@@ -1,4 +1,4 @@
-﻿using edcClientDotnet.internalImpl.util;
+using edcClientDotnet.internalImpl.util;
 using edcClientDotnet.io;
 using edcClientDotnet.model;
 using edcClientDotnet.utils;

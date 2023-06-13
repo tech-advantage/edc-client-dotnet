@@ -1,4 +1,4 @@
-﻿using edcClientDotnet.model;
+using edcClientDotnet.model;
 using System.Collections.ObjectModel;
 
 namespace edcClientDotnet.internalImpl.model

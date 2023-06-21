@@ -15,10 +15,9 @@ namespace edcClientDotnet.Injection
     public static class Startup
     {
         public static IServiceProvider? serviceProvider;
+        public static IServiceCollection services = new ServiceCollection();
         public static void ConfigureServices()
         {
-            var services = new ServiceCollection();
-
             services.AddSingleton<HttpClient>();
             services.AddSingleton<HttpClientDotnet>().AddSingleton<HttpClient, HttpClientDotnet>(s => s.GetService<HttpClientDotnet>());
             services.AddSingleton<IEdcClient, EdcClientImpl>();

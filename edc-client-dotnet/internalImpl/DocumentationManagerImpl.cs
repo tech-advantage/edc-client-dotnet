@@ -46,7 +46,7 @@ namespace edcClientDotnet.internalImpl
             if (_contexts == null)
             {
                 _logger.Debug("No contexts defined, read it");
-                _contexts = _reader.GetContext();
+                _contexts = _reader.ReadContext();
             }
         }
 
